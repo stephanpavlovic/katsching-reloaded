@@ -1,5 +1,12 @@
 class Group < ApplicationRecord
+  has_many :users
+  has_many :transactions, through: :users
+
   before_create :assign_slug
+
+  def balance
+    Money.new(transactions.balance)
+  end
 
   private
 
@@ -7,3 +14,14 @@ class Group < ApplicationRecord
     self.slug ||= SecureRandom.alphanumeric(10).downcase
   end
 end
+
+# == Schema Information
+#
+# Table name: groups
+#
+#  id         :bigint           not null, primary key
+#  name       :string
+#  slug       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
