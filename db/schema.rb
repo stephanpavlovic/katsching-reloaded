@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_26_114104) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_26_122759) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,6 +18,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_26_114104) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
   end
 
   create_table "repetitions", force: :cascade do |t|
@@ -43,6 +44,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_26_114104) do
     t.bigint "group_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
     t.index ["group_id"], name: "index_users_on_group_id"
   end
 
