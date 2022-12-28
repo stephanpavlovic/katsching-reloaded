@@ -1,0 +1,27 @@
+// Entry point for your Sass build
+@import '../source/base/variables';
+@import '../source/base/utilities';
+@import '../source/base/box';
+
+@import '../source/components/button';
+@import '../source/components/form';
+@import '../source/components/header';
+@import '../source/components/headline';
+@import '../source/components/transaction';
+
+body {
+  background: $black;
+  color: $white;
+  font-family: $baseFont;
+  padding: 0;
+  margin: 0;
+}
+
+html{
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
