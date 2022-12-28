@@ -1,13 +1,13 @@
 // Entry point for your Sass build
-@import 'base/Variables';
-@import 'base/Utilities';
-@import 'base/Box';
+@import './base/Variables';
+@import './base/Utilities';
+@import './base/Box';
 
-@import 'components/Button';
-@import 'components/Form';
-@import 'components/Header';
-@import 'components/Headline';
-@import 'components/Transaction';
+@import './components/Button';
+@import './components/Form';
+@import './components/Header';
+@import './components/Headline';
+@import './components/Transaction';
 
 body {
   background: $black;
