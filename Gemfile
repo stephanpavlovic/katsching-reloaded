@@ -44,6 +44,7 @@ gem "bootsnap", require: false
 
 # Use Sass to process CSS
 gem 'haml-rails'
+gem "sassc-rails"
 # gem 'rails_admin', '~> 3.0'
 gem 'interactor', '~> 3.1'
 gem 'view_component'
