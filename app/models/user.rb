@@ -7,7 +7,7 @@ class User < ApplicationRecord
   private
 
   def assign_slug
-    self.slug ||= SecureRandom.alphanumeric(10)
+    self.slug ||= SecureRandom.alphanumeric(10).downcase
   end
 end
 
