@@ -1,0 +1,10 @@
+.Transaction
+  .Transaction-date
+    .MarginBottomSmall= relevant_date.strftime("%b")
+    = relevant_date.strftime("%d")
+  .Transaction-main
+    .Transaction-label= transaction.name
+    .Transaction-value= t("categories.#{transaction.category}") if transaction.category.present?
+  .Transaction-amount
+    .Transaction-label= incoming? ? t('.in') : t('.out')
+    .Transaction-value= helpers.format_money transaction.amount

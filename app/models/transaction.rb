@@ -1,6 +1,8 @@
 class Transaction < ApplicationRecord
   belongs_to :user
 
+  CATEGORIES = %w[groceries leisure mobility savings insuranceholidays rent salary other].freeze
+
   monetize :amount_cents
 
   scope :this_month, -> { where(created_at: Time.zone.now.beginning_of_month..Time.zone.now.end_of_month) }

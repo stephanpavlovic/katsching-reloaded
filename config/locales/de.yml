@@ -1,0 +1,21 @@
+de:
+  transactions:
+    new:
+      submit: 'Speichern'
+  categories:
+    groceries: Einkauf
+    insurance: Versicherung
+    rent: Miete
+    salary: Gehalt
+    leisure: Freizeit
+    mobility: Mobilität
+    savings: Sparen
+    holidays: Urlaub
+    other: Sonsitiges
+  activerecord:
+    attributes:
+      transaction:
+        amount: Betrag
+        name: Beschreibung
+        category: Kategorie
+        date: Datum

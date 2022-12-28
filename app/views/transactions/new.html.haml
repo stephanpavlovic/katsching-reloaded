@@ -1,0 +1,15 @@
+= turbo_frame_tag :new_transaction do
+  = form_with model: @transaction, url: user_transactions_path(@user.slug), class: 'Form', data: { 'turbo-frame': '_top' } do |f|
+    .MarginBottomSmall= f.label :amount, class: 'Label'
+    .MarginBottom= f.number_field :amount, class: 'Input asMain', placeholder: '0.00', step: 0.01
+
+    .MarginBottomSmall= f.label :category, class: 'Label'
+    .MarginBottom= f.select :category, options_for_select(category_options), {}, class: 'Select'
+
+    .MarginBottomSmall= f.label :name, class: 'Label'
+    .MarginBottom= f.text_field :name, class: 'Input'
+
+    .MarginBottomSmall= f.label :date, class: 'Label'
+    .MarginBottom= f.date_field :date, class: 'Input'
+
+    = f.submit t('.submit'), class: 'Button'
