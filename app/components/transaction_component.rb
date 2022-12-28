@@ -10,6 +10,10 @@ class TransactionComponent < ViewComponent::Base
 
   private
 
+  def amount
+    helpers.format_money transaction.amount.abs
+  end
+
   def relevant_date
     transaction.date.presence || transaction.created_at
   end

@@ -17,6 +17,8 @@ class TransactionsController < ApplicationController
   private
 
   def transaction_params
-    params.require(:transaction).permit(:amount, :name, :category, :date)
+    par = params.require(:transaction).permit(:amount, :name, :category, :date)
+    par[:amount] = par[:amount].to_i * -1 if params[:outgoing]
+    par
   end
 end

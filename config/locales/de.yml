@@ -1,6 +1,7 @@
 de:
   transactions:
     new:
+      outgoing: Ausgabe
       submit: 'Speichern'
   categories:
     groceries: Einkauf
