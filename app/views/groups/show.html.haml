@@ -1,0 +1,7 @@
+= render HeaderComponent.new(name: @group.name, balance: @transactions.balance)
+.MarginLarge
+  = render TransactionListComponent.new(transactions: @transactions)
+-# .Bottom
+-#   = turbo_frame_tag :new_transaction do
+-#     = link_to new_user_transaction_path(@user.slug), class: 'Button asFullWidth' do
+-#       = t('.new_transaction')

@@ -1,7 +1,7 @@
 class Transaction < ApplicationRecord
   belongs_to :user
 
-  CATEGORIES = %w[groceries leisure mobility savings insuranceholidays rent salary other].freeze
+  CATEGORIES = %w[groceries leisure mobility savings insurance holidays rent salary other].freeze
 
   monetize :amount_cents
 
