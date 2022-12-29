@@ -1,3 +1,13 @@
+GIT
+  remote: https://github.com/sidekiq-scheduler/sidekiq-scheduler.git
+  revision: f664996648f4b5b12ab4ba1747d9d50875faea84
+  tag: v5.0.0.beta1
+  specs:
+    sidekiq-scheduler (5.0.0.beta1)
+      rufus-scheduler (~> 3.2)
+      sidekiq (>= 4, < 8)
+      tilt (>= 1.4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -86,6 +96,7 @@ GEM
       xpath (~> 3.2)
     colorize (0.8.1)
     concurrent-ruby (1.1.10)
+    connection_pool (2.3.0)
     crass (1.0.6)
     cssbundling-rails (1.1.1)
       railties (>= 6.0.0)
@@ -95,7 +106,12 @@ GEM
       reline (>= 0.3.1)
     diff-lcs (1.5.0)
     erubi (1.12.0)
+    et-orbi (1.2.7)
+      tzinfo
     ffi (1.15.5)
+    fugit (1.8.0)
+      et-orbi (~> 1, >= 1.2.7)
+      raabro (~> 1.4)
     globalid (1.0.0)
       activesupport (>= 5.0)
     haml (6.1.1)
@@ -160,6 +176,7 @@ GEM
     public_suffix (5.0.1)
     puma (5.6.5)
       nio4r (~> 2.0)
+    raabro (1.4.0)
     racc (1.6.2)
     rack (2.2.4)
     rack-test (2.0.2)
@@ -192,6 +209,8 @@ GEM
       zeitwerk (~> 2.5)
     rake (13.0.6)
     redis (4.8.0)
+    redis-client (0.11.2)
+      connection_pool
     regexp_parser (2.6.1)
     reline (0.3.2)
       io-console (~> 0.5)
@@ -214,6 +233,8 @@ GEM
       rspec-support (~> 3.11)
     rspec-support (3.12.0)
     rubyzip (2.3.2)
+    rufus-scheduler (3.8.2)
+      fugit (~> 1.1, >= 1.1.6)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
@@ -226,6 +247,11 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    sidekiq (7.0.2)
+      concurrent-ruby (< 2)
+      connection_pool (>= 2.3.0)
+      rack (>= 2.2.4)
+      redis-client (>= 0.11.0)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -288,6 +314,8 @@ DEPENDENCIES
   rspec-rails (~> 6.0)
   sassc-rails
   selenium-webdriver
+  sidekiq
+  sidekiq-scheduler!
   sprockets-rails
   stimulus-rails
   turbo-rails

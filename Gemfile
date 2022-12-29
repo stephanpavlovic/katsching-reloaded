@@ -50,6 +50,9 @@ gem 'interactor', '~> 3.1'
 gem 'view_component'
 gem 'colorize'
 gem 'money-rails'
+gem 'sidekiq'
+# gem 'sidekiq-scheduler'
+gem 'sidekiq-scheduler', git: 'https://github.com/sidekiq-scheduler/sidekiq-scheduler.git', tag: 'v5.0.0.beta1'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"

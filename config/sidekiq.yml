@@ -1,0 +1,17 @@
+development:
+  :concurrency: 2
+production:
+  :concurrency: 5
+:queues:
+  - expenses
+# :schedule:
+  # cron format with seconds resolution:
+  # seconds / minute / hour / day of the month / month / day of the week
+  # 0-59    / 0-59   / 0-23 / 1-31             / 1-12  / 0-6
+  # For decryption follow https://crontab.guru
+  # SetWestBahnJob:
+  #   cron: "0 1 * * *" # every day at 01:00
+:scheduler:
+  :schedule:
+    CreateRecurringTransactionsJob:
+      cron: '0 1 * * * *'   # Runs once per minute

@@ -1,24 +1,11 @@
-# README
+### Setup job queue
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project is using `sidekiq` and `sidekiq-scheduler` to manage and schedule
+background jobs. To use this you should only need to steps:
 
-Things you may want to cover:
+1. Install and run `redis` with default configuration
+2. run `bundle exec sidekiq`
 
-* Ruby version
+In producion or custom redis installations just use the `REDIS_URL` env variable.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The sidekiq **web ui** can be viewed on `/admin/sidekiq`.

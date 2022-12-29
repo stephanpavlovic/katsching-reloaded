@@ -1,4 +1,50 @@
 class Repetition < ApplicationRecord
+  TIMINGS = %w[weekly biweekly monthly quartaly halfyearly yearly].freeze
+
+  has_many :transactions
+
+  scope :active, -> { where(active: true) }
+
+  before_create :set_inital_iteration
+
+  def create_next_transaction!
+    return if original_transaction.blank? || next_iteration.blank?
+
+    transactions.create(date: next_iteration, amount: original_transaction.amount, name: original_transaction.name, category: original_transaction.category, user: original_transaction.user, shared: original_transaction.shared)
+    set_next_iteration!(calculate_next_iteration(next_iteration))
+  end
+
+  def original_transaction
+    transactions.first
+  end
+
+  private
+
+  def set_inital_iteration
+    next_iteration = calculate_next_iteration(original_transaction.date) if next_iteration.blank?
+  end
+
+  def set_next_iteration!(date)
+    update(next_iteration: date)
+  end
+
+  def calculate_next_iteration(date)
+    case timing
+    when 'weekly'
+      date + 1.week
+    when 'biweekly'
+      date + 2.weeks
+    when 'monthly'
+      date + 1.month
+    when 'quartaly'
+      date + 3.months
+    when 'halfyearly'
+      date + 6.months
+    when 'yearly'
+      date + 1.year
+    end
+  end
+
 end
 
 # == Schema Information

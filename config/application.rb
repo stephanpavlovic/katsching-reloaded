@@ -14,6 +14,7 @@ module ExpenseTracker
 
     # Set default locale to something other than :en
     I18n.default_locale = :de
+    config.active_job.queue_adapter = :sidekiq
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -21,6 +22,7 @@ module ExpenseTracker
     # in config/environments, which are processed later.
     #
     # config.time_zone = "Central Time (US & Canada)"
+    config.time_zone = "Berlin"
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
