@@ -1,2 +1,5 @@
-= turbo_frame_tag :new_repetition do
-  = form_with model: @repetition, class: 'Form', data: { 'turbo-frame': dom_id(@transaction) } do |f|
+%turbo-frame{ id: "repetition_transaction_#{@transaction.id}" }
+  = form_with model: @repetition, class: 'Form' do |f|
+    = hidden_field_tag :transaction_id, @transaction.id
+    .MarginBottom= f.select :timing, options_for_select(Repetition::TIMINGS, @repetition.timing), {prompt: t('common.prompt')}, class: 'Select'
+    = f.submit t('.save'), class: 'Button'

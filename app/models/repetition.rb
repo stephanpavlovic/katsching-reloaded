@@ -5,8 +5,6 @@ class Repetition < ApplicationRecord
 
   scope :active, -> { where(active: true) }
 
-  before_create :set_inital_iteration
-
   def create_next_transaction!
     return if original_transaction.blank? || next_iteration.blank?
 
@@ -20,16 +18,6 @@ class Repetition < ApplicationRecord
 
   def user
     original_transaction&.user
-  end
-
-  private
-
-  def set_inital_iteration
-    next_iteration = calculate_next_iteration(original_transaction.date) if next_iteration.blank?
-  end
-
-  def set_next_iteration!(date)
-    update(next_iteration: date)
   end
 
   def calculate_next_iteration(date)
@@ -47,6 +35,16 @@ class Repetition < ApplicationRecord
     when 'yearly'
       date + 1.year
     end
+  end
+
+  def set_inital_iteration!
+    update(next_iteration: calculate_next_iteration(original_transaction.date)) if next_iteration.blank?
+  end
+
+  private
+
+  def set_next_iteration!(date)
+    update(next_iteration: date)
   end
 
 end

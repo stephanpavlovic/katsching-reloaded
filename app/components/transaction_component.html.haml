@@ -8,4 +8,9 @@
       .Transaction-value= t("categories.#{transaction.category}") if transaction.category.present?
     .Transaction-amount
       .Transaction-label= transaction.incoming? ? t('.in') : t('.out')
-      .Transaction-value= amount
+      .Transaction-value
+        = link_to new_repetition_path(transaction_id: transaction.id), data: { turbo_frame: "repetition_transaction_#{transaction.id}" } do
+          = amount
+%turbo-frame{ id: "repetition_transaction_#{transaction.id}" }
+  - if transaction.repetition.present?
+    .TransactionTiming= t("repetitions.timings.#{transaction.repetition.timing}")

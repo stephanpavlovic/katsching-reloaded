@@ -5,10 +5,11 @@ class RepetitionsController < ApplicationController
   end
 
   def create
+    @repetition = Repetition.new(repetition_params)
     @transaction = Transaction.find(params[:transaction_id])
-    @repetition = Repetition.new(repetition_params.merge(transaction: @transaction))
-    debugger
     if @repetition.save
+      @transaction.update(repetition: @repetition)
+      @repetition.set_inital_iteration!
       redirect_to user_path(@transaction.user.slug)
     else
       render :new
