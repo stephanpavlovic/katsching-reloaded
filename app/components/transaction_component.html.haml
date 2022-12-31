@@ -1,5 +1,5 @@
 %turbo-frame{ id: dom_id(transaction) }
-  .Transaction
+  .Transaction{ class: ("asFuture" if transaction.future?)}
     = link_to edit_user_transaction_path(user.slug, transaction), class: 'Transaction-date' do
       .MarginBottomSmall= relevant_date.strftime("%b")
       = relevant_date.strftime("%d")
@@ -13,4 +13,5 @@
           = amount
 %turbo-frame{ id: "repetition_transaction_#{transaction.id}" }
   - if transaction.repetition.present?
-    .TransactionTiming= t("repetitions.timings.#{transaction.repetition.timing}")
+    .TransactionTiming{ class: ("asFuture" if transaction.future?)}
+      = t("repetitions.timings.#{transaction.repetition.timing}")

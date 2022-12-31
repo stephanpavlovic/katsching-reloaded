@@ -8,7 +8,7 @@ class Transaction < ApplicationRecord
 
   scope :this_month, -> { where(created_at: Time.zone.now.beginning_of_month..Time.zone.now.end_of_month) }
   scope :last_month, -> { where(created_at: Time.zone.now.last_month.beginning_of_month..Time.zone.now.last_month.end_of_month) }
-  scope :past, -> { where('date < ?', Date.today) }
+  scope :past, -> { where('date <= ?', Date.today) }
 
   def self.balance
     Money.new(all.sum(:amount_cents))
@@ -20,6 +20,10 @@ class Transaction < ApplicationRecord
 
   def outgoing?
     !amount&.positive?
+  end
+
+  def future?
+    date > Date.today
   end
 end
 

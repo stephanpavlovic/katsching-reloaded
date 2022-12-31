@@ -1,9 +1,12 @@
+$transactionOpacity: 0.5
 .Transaction
   background: $mediumGrey
   color: $lightGrey
   padding: 1rem
   display: flex
   align-items: center
+  &.asFuture
+    opacity: $transactionOpacity
   .Transaction-date
     border-right: 1px solid $lightGrey
     margin-right: 1rem
@@ -30,3 +33,5 @@
   padding: 0.5rem
   display: flex
   justify-content: flex-end
+  &.asFuture
+    opacity: $transactionOpacity
