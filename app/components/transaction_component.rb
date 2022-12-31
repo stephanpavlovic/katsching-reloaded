@@ -10,20 +10,16 @@ class TransactionComponent < ViewComponent::Base
 
   private
 
+  def user
+    transaction.user
+  end
+
   def amount
     helpers.format_money transaction.amount.abs
   end
 
   def relevant_date
     transaction.date.presence || transaction.created_at
-  end
-
-  def incoming?
-    transaction.amount.positive?
-  end
-
-  def outgoing?
-    !transaction.amount.positive?
   end
 
 end

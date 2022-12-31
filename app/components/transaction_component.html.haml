@@ -1,10 +1,11 @@
-.Transaction
-  .Transaction-date
-    .MarginBottomSmall= relevant_date.strftime("%b")
-    = relevant_date.strftime("%d")
-  .Transaction-main
-    .Transaction-label= transaction.name
-    .Transaction-value= t("categories.#{transaction.category}") if transaction.category.present?
-  .Transaction-amount
-    .Transaction-label= incoming? ? t('.in') : t('.out')
-    .Transaction-value= amount
+%turbo-frame{ id: dom_id(transaction) }
+  .Transaction
+    = link_to edit_user_transaction_path(user.slug, transaction), class: 'Transaction-date' do
+      .MarginBottomSmall= relevant_date.strftime("%b")
+      = relevant_date.strftime("%d")
+    .Transaction-main
+      .Transaction-label= transaction.name
+      .Transaction-value= t("categories.#{transaction.category}") if transaction.category.present?
+    .Transaction-amount
+      .Transaction-label= transaction.incoming? ? t('.in') : t('.out')
+      .Transaction-value= amount

@@ -1,0 +1,2 @@
+= turbo_frame_tag dom_id(@transaction) do
+  = render 'form', url: user_transaction_path(@user.slug, @transaction), transaction: @transaction

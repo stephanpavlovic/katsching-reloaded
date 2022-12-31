@@ -18,6 +18,10 @@ class Repetition < ApplicationRecord
     transactions.first
   end
 
+  def user
+    original_transaction&.user
+  end
+
   private
 
   def set_inital_iteration

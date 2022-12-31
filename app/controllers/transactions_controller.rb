@@ -14,6 +14,21 @@ class TransactionsController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find_by(slug: params[:user_id])
+    @transaction = @user.transactions.find(params[:id])
+  end
+
+  def update
+    @user = User.find_by(slug: params[:user_id])
+    @transaction = @user.transactions.find(params[:id])
+    if @transaction.update(transaction_params)
+      redirect_to user_path(@user.slug)
+    else
+      render :edit
+    end
+  end
+
   private
 
   def transaction_params

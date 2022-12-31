@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   root "pages#home"
   resources :groups, only: [:show]
   resources :users, only: [:show] do
-    resources :transactions, only: [:create, :new]
+    resources :transactions, only: [:create, :new, :edit, :update]
   end
+  resources :repetitions, only: [:create, :new, :edit, :update]
 end

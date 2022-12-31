@@ -13,6 +13,14 @@ class Transaction < ApplicationRecord
   def self.balance
     Money.new(all.sum(:amount_cents))
   end
+
+  def incoming?
+    amount&.positive?
+  end
+
+  def outgoing?
+    !amount&.positive?
+  end
 end
 
 # == Schema Information
