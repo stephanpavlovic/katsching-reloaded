@@ -11,13 +11,13 @@ de:
   categories:
     groceries: Einkauf
     insurance: Versicherung
-    rent: Miete
+    rent: Miete/Strom/Heizung
     salary: Gehalt
     leisure: Freizeit
     mobility: Mobilität
     savings: Sparen
     holidays: Urlaub
-    other: Sonsitiges
+    other: Sonstiges
   activerecord:
     attributes:
       transaction:
