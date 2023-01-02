@@ -4,8 +4,8 @@
       .MarginBottomSmall= relevant_date.strftime("%b")
       = relevant_date.strftime("%d")
     = link_to edit_user_transaction_path(user.slug, transaction), class: 'Transaction-main' do
-      .Transaction-label= transaction.name
-      .Transaction-value= t("categories.#{transaction.category}") if transaction.category.present?
+      .Transaction-label= t("categories.#{transaction.category}") if transaction.category.present?
+      .Transaction-value= transaction.name
     .Transaction-amount
       - if transaction.repetition.present?
         = link_to edit_repetition_path(transaction.repetition, transaction_id: transaction.id), data: { turbo_frame: "repetition_transaction_#{transaction.id}" } do
