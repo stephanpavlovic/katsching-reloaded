@@ -30,6 +30,8 @@ de:
   users:
     new_transaction:
       button: 'Neue Ausgabe'
+  transaction_list_component:
+    last_transactions: Letzte Transaktionen
   activerecord:
     attributes:
       transaction:
