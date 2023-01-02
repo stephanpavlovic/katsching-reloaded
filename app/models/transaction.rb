@@ -6,8 +6,8 @@ class Transaction < ApplicationRecord
 
   monetize :amount_cents
 
-  scope :this_month, -> { where(created_at: Time.zone.now.beginning_of_month..Time.zone.now.end_of_month) }
-  scope :last_month, -> { where(created_at: Time.zone.now.last_month.beginning_of_month..Time.zone.now.last_month.end_of_month) }
+  scope :this_month, -> { where(date: Time.zone.now.beginning_of_month..Time.zone.now.end_of_month) }
+  scope :last_month, -> { where(date: Time.zone.now.last_month.beginning_of_month..Time.zone.now.last_month.end_of_month) }
   scope :past, -> { where('date <= ?', Date.today) }
 
   def self.balance

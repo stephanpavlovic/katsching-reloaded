@@ -1,4 +1,4 @@
-= render HeaderComponent.new(name: @user.name, balance: @balance)
+= render HeaderComponent.new(name: @user.name, balance: @balance, timing: :this_month, link: group_path(@user.group.slug))
 .MarginLarge
   = render TransactionListComponent.new(transactions: @transactions)
 .Bottom

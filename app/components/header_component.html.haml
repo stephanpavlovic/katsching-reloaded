@@ -1,5 +1,8 @@
 .HeaderComponent
-  .HeaderComponent-title= name
+  - if link.blank?
+    .HeaderComponent-title= name
+  - else
+    = link_to name, link, class: 'HeaderComponent-title'
   .Box.HeaderComponent-balance
-    .HeaderComponent-balance-label= t('.balance')
+    .HeaderComponent-balance-label= label
     .HeaderComponent-balance-value= balance

@@ -3,17 +3,22 @@
     = link_to edit_user_transaction_path(user.slug, transaction), class: 'Transaction-date' do
       .MarginBottomSmall= relevant_date.strftime("%b")
       = relevant_date.strftime("%d")
-    .Transaction-main
+    = link_to edit_user_transaction_path(user.slug, transaction), class: 'Transaction-main' do
       .Transaction-label= transaction.name
       .Transaction-value= t("categories.#{transaction.category}") if transaction.category.present?
     .Transaction-amount
-      = link_to new_repetition_path(transaction_id: transaction.id), data: { turbo_frame: "repetition_transaction_#{transaction.id}" } do
-        .Transaction-label
-          - if transaction.repetition.present?
+      - if transaction.repetition.present?
+        = link_to edit_repetition_path(transaction.repetition, transaction_id: transaction.id), data: { turbo_frame: "repetition_transaction_#{transaction.id}" } do
+          .Transaction-label
             = t("repetitions.timings.#{transaction.repetition.timing}")
-          - else
-            = t('common.once')
-        .Transaction-value
+          .Transaction-value
           = amount
+      - else
+        = link_to new_repetition_path(transaction_id: transaction.id), data: { turbo_frame: "repetition_transaction_#{transaction.id}" } do
+          .Transaction-label
+            = t('common.once')
+          .Transaction-value
+          = amount
+
 %turbo-frame{ id: "repetition_transaction_#{transaction.id}" }
 

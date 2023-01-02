@@ -1,15 +1,19 @@
 de:
   common:
+    cancel: Abbrechen
+    delete: Löschen
     prompt: 'Bitte wählen'
     once: Einmalig
+    submit: Speichern
+    confirm: Wirklich löschen?
   transactions:
     form:
       outgoing: Ausgabe
       shared: Gemeinsame Ausgabe
       submit: 'Speichern'
   repetitions:
-    new:
-      save: 'Speichern'
+    form:
+      prompt: 'Wiederholung wählen'
     timings:
       daily: Täglich
       weekly: Wöchentlich

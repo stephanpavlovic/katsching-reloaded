@@ -16,6 +16,21 @@ class RepetitionsController < ApplicationController
     end
   end
 
+  def edit
+    @repetition = Repetition.find(params[:id])
+    @transaction = Transaction.find(params[:transaction_id])
+  end
+
+  def update
+    @repetition = Repetition.find(params[:id])
+    @transaction = Transaction.find(params[:transaction_id])
+    if @repetition.update(repetition_params)
+      redirect_to user_path(@transaction.user.slug)
+    else
+      render :edit
+    end
+  end
+
   private
 
   def repetition_params

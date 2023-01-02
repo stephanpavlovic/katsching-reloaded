@@ -1,0 +1,6 @@
+= form_with model: repetition, class: 'Form', data: { 'turbo-frame': '_top' } do |f|
+  = hidden_field_tag :transaction_id, transaction.id
+  .MarginBottomSmall= f.select :timing, options_for_select(timing_options, repetition.timing), {prompt: t('.prompt')}, class: 'Select'
+  .Flex
+    = link_to t('common.cancel'), user_path(transaction.user.slug), class: 'Link'
+    = f.submit t('common.submit'), class: 'Button'
