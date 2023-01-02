@@ -1,5 +1,5 @@
 class Repetition < ApplicationRecord
-  TIMINGS = %w[weekly biweekly monthly quartaly halfyearly yearly].freeze
+  TIMINGS = %w[weekly monthly yearly quartaly halfyearly].freeze
 
   has_many :transactions
 
@@ -13,7 +13,7 @@ class Repetition < ApplicationRecord
   end
 
   def original_transaction
-    transactions.first
+    transactions.order(:date).last
   end
 
   def user

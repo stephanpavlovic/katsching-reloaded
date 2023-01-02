@@ -1,13 +1,22 @@
 de:
   common:
     prompt: 'Bitte wählen'
+    once: Einmalig
   transactions:
     form:
       outgoing: Ausgabe
+      shared: Gemeinsame Ausgabe
       submit: 'Speichern'
   repetitions:
     new:
       save: 'Speichern'
+    timings:
+      daily: Täglich
+      weekly: Wöchentlich
+      monthly: Monatlich
+      yearly: Jährlich
+      quartaly: Vierteljährlich
+      halfyearly: Halbjährlich
   categories:
     groceries: Einkauf
     insurance: Versicherung
@@ -18,6 +27,9 @@ de:
     savings: Sparen
     holidays: Urlaub
     other: Sonstiges
+  users:
+    new_transaction:
+      button: 'Neue Ausgabe'
   activerecord:
     attributes:
       transaction:

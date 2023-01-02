@@ -1,5 +1,5 @@
 %turbo-frame{ id: "repetition_transaction_#{@transaction.id}" }
   = form_with model: @repetition, class: 'Form' do |f|
     = hidden_field_tag :transaction_id, @transaction.id
-    .MarginBottom= f.select :timing, options_for_select(Repetition::TIMINGS, @repetition.timing), {prompt: t('common.prompt')}, class: 'Select'
+    .MarginBottom= f.select :timing, options_for_select(timing_options, @repetition.timing), {prompt: t('common.prompt')}, class: 'Select'
     = f.submit t('.save'), class: 'Button'

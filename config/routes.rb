@@ -6,9 +6,10 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq'
   # Defines the root path route ("/")
   root "pages#home"
+  get "/clear", to: "pages#clear", as: :clear
   resources :groups, only: [:show]
   resources :users, only: [:show] do
-    resources :transactions, only: [:create, :new, :edit, :update]
+    resources :transactions
   end
   resources :repetitions, only: [:create, :new, :edit, :update]
 end

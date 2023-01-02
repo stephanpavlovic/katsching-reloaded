@@ -3,6 +3,10 @@ module ApplicationHelper
     Transaction::CATEGORIES.map { |category| [t("categories.#{category}"), category] }
   end
 
+  def timing_options
+    Repetition::TIMINGS.map { |timing| [t("repetitions.timings.#{timing}"), timing] }
+  end
+
   def format_money(money)
     return nil unless money.instance_of?(Money)
 

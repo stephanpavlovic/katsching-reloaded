@@ -10,6 +10,13 @@ class TransactionComponent < ViewComponent::Base
 
   private
 
+  def classes
+    classes = []
+    classes << 'asFuture' if transaction.future?
+    classes << 'asOutgoing' if transaction.outgoing?
+    classes
+  end
+
   def user
     transaction.user
   end

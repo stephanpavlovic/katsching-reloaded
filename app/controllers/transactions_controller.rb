@@ -29,10 +29,17 @@ class TransactionsController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find_by(slug: params[:user_id])
+    @transaction = @user.transactions.find(params[:id])
+    @transaction.destroy
+    redirect_to user_path(@user.slug)
+  end
+
   private
 
   def transaction_params
-    par = params.require(:transaction).permit(:amount, :name, :category, :date)
+    par = params.require(:transaction).permit(:amount, :name, :category, :date, :shared)
     par[:amount] = par[:amount].to_i * -1 if params[:outgoing]
     par
   end

@@ -1,5 +1,5 @@
 %turbo-frame{ id: dom_id(transaction) }
-  .Transaction{ class: ("asFuture" if transaction.future?)}
+  .Transaction{ class: classes}
     = link_to edit_user_transaction_path(user.slug, transaction), class: 'Transaction-date' do
       .MarginBottomSmall= relevant_date.strftime("%b")
       = relevant_date.strftime("%d")
@@ -7,11 +7,13 @@
       .Transaction-label= transaction.name
       .Transaction-value= t("categories.#{transaction.category}") if transaction.category.present?
     .Transaction-amount
-      .Transaction-label= transaction.incoming? ? t('.in') : t('.out')
-      .Transaction-value
-        = link_to new_repetition_path(transaction_id: transaction.id), data: { turbo_frame: "repetition_transaction_#{transaction.id}" } do
+      = link_to new_repetition_path(transaction_id: transaction.id), data: { turbo_frame: "repetition_transaction_#{transaction.id}" } do
+        .Transaction-label
+          - if transaction.repetition.present?
+            = t("repetitions.timings.#{transaction.repetition.timing}")
+          - else
+            = t('common.once')
+        .Transaction-value
           = amount
 %turbo-frame{ id: "repetition_transaction_#{transaction.id}" }
-  - if transaction.repetition.present?
-    .TransactionTiming{ class: ("asFuture" if transaction.future?)}
-      = t("repetitions.timings.#{transaction.repetition.timing}")
+

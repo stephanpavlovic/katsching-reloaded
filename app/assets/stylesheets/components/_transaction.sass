@@ -5,8 +5,11 @@ $transactionOpacity: 0.5
   padding: 1rem
   display: flex
   align-items: center
-  &.asFuture
-    opacity: $transactionOpacity
+  position: relative
+  overflow: hidden
+  a
+    color: $lightGrey
+    text-decoration: none
   .Transaction-date
     border-right: 1px solid $lightGrey
     margin-right: 1rem
@@ -19,19 +22,22 @@ $transactionOpacity: 0.5
   .Transaction-value
     font-size: 1.25rem
     font-weight: bold
-    a
-      color: $lightGrey
-      text-decoration: none
   .Transaction-main
     flex: 1
   .Transaction-amount
     text-align: right
-.TransactionTiming
-  margin-top: 2px
-  background: $mediumGrey
-  color: $lightGrey
-  padding: 0.5rem
-  display: flex
-  justify-content: flex-end
+  &:before
+    content: ''
+    display: block
+    position: absolute
+    top: -8px
+    right: -8px
+    transform: rotate(45deg)
+    background: $green
+    width: 16px
+    height: 16px
   &.asFuture
     opacity: $transactionOpacity
+  &.asOutgoing
+    &:before
+      background: $red
