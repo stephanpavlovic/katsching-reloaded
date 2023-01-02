@@ -12,13 +12,13 @@
           .Transaction-label
             = t("repetitions.timings.#{transaction.repetition.timing}")
           .Transaction-value
-          = amount
+            = amount
       - else
         = link_to new_repetition_path(transaction_id: transaction.id), data: { turbo_frame: "repetition_transaction_#{transaction.id}" } do
           .Transaction-label
             = t('common.once')
           .Transaction-value
-          = amount
+            = amount
 
 %turbo-frame{ id: "repetition_transaction_#{transaction.id}" }
 
