@@ -8,8 +8,9 @@ de:
     confirm: Wirklich löschen?
   transactions:
     form:
+      incoming: Einnahme
       outgoing: Ausgabe
-      shared: Gemeinsame Ausgabe
+      shared: Gemeinsame Einnahme/Ausgabe
       submit: 'Speichern'
   repetitions:
     form:
@@ -31,11 +32,16 @@ de:
     savings: Sparen
     holidays: Urlaub
     other: Sonstiges
+  groups:
+    show:
+      shared_transactions: Gemeinsame Ausgaben
+      all_transactions: Alle Transaktionen
+
   users:
     new_transaction:
       button: 'Neue Ausgabe'
-  transaction_list_component:
-    last_transactions: Letzte Transaktionen
+    show:
+      last_transactions: Letzte Transaktionen
   activerecord:
     attributes:
       transaction:

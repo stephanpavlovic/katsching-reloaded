@@ -1,5 +1,5 @@
 %turbo-frame{ id: dom_id(transaction) }
-  .Transaction{ class: classes}
+  .Transaction{ class: classes }
     = link_to edit_user_transaction_path(user.slug, transaction), class: 'Transaction-date' do
       .MarginBottomSmall= relevant_date.strftime("%b")
       = relevant_date.strftime("%d")

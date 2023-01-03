@@ -1,5 +1,10 @@
 = render HeaderComponent.new(name: @group.name, balance: @balance)
-.MarginLarge
+.Margin
+  .Headline.MarginBottom
+    - if params[:all].blank?
+      = link_to t('.shared_transactions'), group_path(@group.slug, all: true), class: 'Link'
+    - else
+      = link_to t('.all_transactions'), group_path(@group.slug), class: 'Link'
   = render TransactionListComponent.new(transactions: @transactions)
 -# .Bottom
 -#   = turbo_frame_tag :new_transaction do

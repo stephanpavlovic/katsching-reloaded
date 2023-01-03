@@ -14,4 +14,4 @@ production:
 :scheduler:
   :schedule:
     CreateRecurringTransactionsJob:
-      cron: '0 1 * * * *'   # Runs once per minute
+      cron: '0 1 * * *'   # Runs once per day at 1am

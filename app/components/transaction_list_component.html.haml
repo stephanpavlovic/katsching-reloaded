@@ -1,4 +1,3 @@
-.Headline.MarginBottom= t('.last_transactions')
 .MarginBottom
   - transactions.each do |transaction|
     .MarginBottomSmall= render TransactionComponent.new(transaction: transaction)

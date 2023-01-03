@@ -1,5 +1,7 @@
 = render HeaderComponent.new(name: @user.name, balance: @balance, timing: :this_month, link: group_path(@user.group.slug))
-.MarginLarge
+.Margin
+  .Headline.MarginBottom
+    = t('.last_transactions')
   = render TransactionListComponent.new(transactions: @transactions)
 .Bottom
   = turbo_frame_tag :new_transaction do

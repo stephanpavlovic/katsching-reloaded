@@ -8,6 +8,10 @@ class GroupsController < ApplicationController
   private
 
   def transactions
-    @group.transactions.this_month.shared
+    if params[:all].blank?
+      @group.transactions.this_month.shared
+    else
+      @group.transactions.this_month
+    end
   end
 end
