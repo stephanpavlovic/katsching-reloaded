@@ -5,6 +5,14 @@ class GroupsController < ApplicationController
     @balance = transactions.balance
   end
 
+  def new
+    @group = Group.new
+  end
+
+  def create
+
+  end
+
   private
 
   def transactions

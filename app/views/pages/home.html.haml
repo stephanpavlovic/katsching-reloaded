@@ -1,1 +1,8 @@
-Home
+.Margin
+  %h1.MarginBottom= t('.headline')
+  .MarginBottom= t('.subline')
+  .Box.asDark
+    = form_with url: search_users_path do |f|
+      .MarginBottom= f.label :email, t('.email_label'), class: 'Label'
+      .MarginBottom= f.email_field :email, placeholder: t('.email_placeholder'), class: 'Input'
+      .Right= f.submit t('.submit'), class: 'Button'

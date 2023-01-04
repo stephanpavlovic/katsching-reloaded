@@ -6,22 +6,6 @@ de:
     once: Einmalig
     submit: Speichern
     confirm: Wirklich löschen?
-  transactions:
-    form:
-      incoming: Einnahme
-      outgoing: Ausgabe
-      shared: Gemeinsame Einnahme/Ausgabe
-      submit: 'Speichern'
-  repetitions:
-    form:
-      prompt: 'Wiederholung wählen'
-    timings:
-      daily: Täglich
-      weekly: Wöchentlich
-      monthly: Monatlich
-      yearly: Jährlich
-      quartaly: Vierteljährlich
-      halfyearly: Halbjährlich
   categories:
     groceries: Einkauf
     insurance: Versicherung
@@ -36,10 +20,37 @@ de:
     show:
       shared_transactions: Gemeinsame Ausgaben
       all_transactions: Alle Transaktionen
-
+  pages:
+    home:
+      headline: Ausgabentracker
+      subline: 'Finde heraus, wo dein Geld hin geht'
+      email_label: E-Mail
+      email_placeholder: 'E-Mail-Adresse eingeben'
+      submit: 'Los gehts!'
+  repetitions:
+    form:
+      prompt: 'Wiederholung wählen'
+    timings:
+      daily: Täglich
+      weekly: Wöchentlich
+      monthly: Monatlich
+      yearly: Jährlich
+      quartaly: Vierteljährlich
+      halfyearly: Halbjährlich
+  transactions:
+    form:
+      incoming: Einnahme
+      outgoing: Ausgabe
+      shared: Gemeinsame Einnahme/Ausgabe
+      submit: 'Speichern'
   users:
     new_transaction:
       button: 'Neue Ausgabe'
+    new:
+      headline: Neues Konto anlegen
+      subline: 'Erstell dein Konto und fange an, deine Ausgaben zu tracken'
+      email_placeholder: 'E-Mail-Adresse eingeben'
+      submit: Konto anlegen
     show:
       last_transactions: Letzte Transaktionen
   activerecord:
