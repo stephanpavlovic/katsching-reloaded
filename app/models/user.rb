@@ -8,6 +8,10 @@ class User < ApplicationRecord
     slug
   end
 
+  def initials
+    name.split.map(&:first).join.upcase
+  end
+
   private
 
   def assign_slug

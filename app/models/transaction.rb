@@ -15,6 +15,10 @@ class Transaction < ApplicationRecord
     Money.new(all.sum(:amount_cents))
   end
 
+  def group
+    user.group
+  end
+
   def incoming?
     amount&.positive?
   end
