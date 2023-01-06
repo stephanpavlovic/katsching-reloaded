@@ -10,6 +10,8 @@
     .HeaderComponent-shared
       = link_to switch_url do
         .AvatarList.asLarge
-          .Avatar
           - if shared
-            .Avatar
+            .Avatar 2
+            .Avatar 1
+          - else
+            .Avatar 1

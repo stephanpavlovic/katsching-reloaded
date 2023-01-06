@@ -13,4 +13,6 @@ Rails.application.routes.draw do
     post :search, on: :collection
   end
   resources :repetitions, only: [:create, :new, :edit, :update]
+
+  get '/transactions', to: 'transactions#index', as: :transactions
 end

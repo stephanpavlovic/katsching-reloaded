@@ -4,4 +4,4 @@
     = @shared ? t('common.shared_transactions') : t('common.all_transactions')
   .MarginBottom
     = render GroupUsersComponent.new(group: @group, timing: params[:timing], only_shared: @shared)
-  = render TransactionListComponent.new(transactions: @transactions)
+  = render TransactionListComponent.new(source: @group, timing: params[:timing], only_shared: @shared)

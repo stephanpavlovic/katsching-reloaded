@@ -2,8 +2,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by!(slug: params[:id].downcase)
     @shared = shared(default: false)
-    @transactions = transactions
-    @balance = @transactions.balance
+    @balance = transactions.balance
   end
 
   def search
@@ -22,8 +21,8 @@ class UsersController < ApplicationController
   private
 
   def transactions
-    result = @user.transactions.order(date: :desc).send(timing)
+    result = @user.transactions
     result = result.shared if @shared
-    result
+    result.order(date: :desc).send(timing)
   end
 end

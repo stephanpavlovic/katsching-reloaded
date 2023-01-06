@@ -8,6 +8,7 @@ de:
     confirm: Wirklich löschen?
     shared_transactions: Gemeinsame Ausgaben
     all_transactions: Alle Transaktionen
+    search: Suchbegriff eingeben
   categories:
     groceries: Einkauf
     insurance: Versicherung

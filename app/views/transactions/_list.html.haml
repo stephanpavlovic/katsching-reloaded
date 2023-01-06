@@ -1,0 +1,12 @@
+%turbo-frame#transactions
+  = search_form_for @q, url: url_for, data: { controller: 'auto-submit', turbo_frame: 'transactions-results'} do |f|
+    = hidden_field_tag :shared, @shared
+    = hidden_field_tag :timing, @timing
+    = hidden_field_tag 'source[id]', params.dig(:source, :id)
+    = hidden_field_tag 'source[type]', params.dig(:source, :type)
+    .MarginBottom= f.search_field :name_cont, data: { action: 'keyup->auto-submit#submit' }, autocomplete: "off", class: 'Input', placeholder: t('common.search')
+    = f.submit "Search", class: 'Hidden'
+  %turbo-frame#transactions-results
+    - transactions.each do |transaction|
+      .MarginBottomSmall
+        = render TransactionComponent.new(transaction: transaction)

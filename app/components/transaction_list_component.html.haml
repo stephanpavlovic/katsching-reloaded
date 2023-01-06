@@ -1,3 +1,6 @@
-.MarginBottom
-  - transactions.each do |transaction|
-    .MarginBottomSmall= render TransactionComponent.new(transaction: transaction)
+%turbo-frame{ id: "transactions", src: url, loading: "lazy"}
+  .Transaction
+    .Transaction-content
+      .Transaction-date
+      .Transaction-main
+        .Transaction-value Loading...
