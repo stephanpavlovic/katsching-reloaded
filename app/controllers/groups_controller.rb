@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find_by(slug: params[:id].downcase)
     @shared = shared(default: true)
-    @transactions = transactions.order(date: :desc, created_at: :desc)
+    @transactions = transactions
     @balance = @transactions.balance
   end
 
@@ -17,7 +17,7 @@ class GroupsController < ApplicationController
   private
 
   def transactions
-    result = @group.transactions.send(timing)
+    result = @group.transactions.order(date: :desc, created_at: :desc).send(timing)
     result = result.shared if @shared
     result
   end
