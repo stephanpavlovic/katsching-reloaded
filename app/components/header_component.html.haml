@@ -5,4 +5,4 @@
     = link_to name, link, class: 'HeaderComponent-title'
   .Box.HeaderComponent-balance
     .HeaderComponent-balance-label= label
-    .HeaderComponent-balance-value= balance
+    .HeaderComponent-balance-value= helpers.balance_money_tag(balance)

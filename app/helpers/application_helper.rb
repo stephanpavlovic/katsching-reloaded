@@ -12,4 +12,10 @@ module ApplicationHelper
 
     money.format(format: "%n%u", symbol: true, no_cents_if_whole: true)
   end
+
+  def balance_money_tag(money)
+    return nil unless money.instance_of?(Money)
+
+    content_tag(:span, format_money(money.abs), class: "Balance #{money.positive? ? 'positive' : 'negative'}")
+  end
 end
