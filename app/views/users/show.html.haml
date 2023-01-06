@@ -1,7 +1,7 @@
-= render HeaderComponent.new(name: @user.name, balance: @balance, timing: :this_month, link: group_path(@user.group.slug))
+= render HeaderComponent.new(name: @user.name, balance: @balance, timing: params[:timing], link: group_path(@user.group.slug), shared: @shared)
 .Margin
   .Headline.MarginBottom
-    = t('.last_transactions')
+    = @shared ? t('common.shared_transactions') : t('common.all_transactions')
   = render TransactionListComponent.new(transactions: @transactions)
 .Bottom
   = turbo_frame_tag :new_transaction do

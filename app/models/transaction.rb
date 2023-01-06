@@ -8,6 +8,7 @@ class Transaction < ApplicationRecord
 
   scope :this_month, -> { where(date: Time.zone.now.beginning_of_month..Time.zone.now.end_of_month) }
   scope :last_month, -> { where(date: Time.zone.now.last_month.beginning_of_month..Time.zone.now.last_month.end_of_month) }
+  scope :year, -> { where(date: Time.zone.now.beginning_of_year..Time.zone.now.end_of_year) }
   scope :past, -> { where('date <= ?', Date.today) }
   scope :shared, -> { where(shared: true) }
 

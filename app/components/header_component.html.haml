@@ -3,6 +3,13 @@
     .HeaderComponent-title= name
   - else
     = link_to name, link, class: 'HeaderComponent-title'
-  .Box.HeaderComponent-balance
-    .HeaderComponent-balance-label= label
-    .HeaderComponent-balance-value= helpers.balance_money_tag(balance)
+  .Box
+    = link_to next_url, class: 'HeaderComponent-balance' do
+      .HeaderComponent-balance-label= label
+      .HeaderComponent-balance-value= helpers.balance_money_tag(balance)
+    .HeaderComponent-shared
+      = link_to switch_url do
+        .AvatarList.asLarge
+          .Avatar
+          - if shared
+            .Avatar

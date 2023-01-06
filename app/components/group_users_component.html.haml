@@ -1,9 +1,6 @@
-.MarginBottom
-  .Flex
-    .Headline.MarginBottomSmall= t('.users')
-  .Flex
-    - users.each do |user|
-      .UserStatus
-        .UserStatus-name= link_to user.name, user_path(user)
-        .UserStatus-balance= helpers.balance_money_tag(transactions.where(user: user).balance)
+.Flex
+  - users.each do |user|
+    .UserStatus
+      .UserStatus-name= link_to user.name, user_path(user, timing: params[:timing])
+      .UserStatus-balance= helpers.balance_money_tag(transactions.where(user: user).balance)
 

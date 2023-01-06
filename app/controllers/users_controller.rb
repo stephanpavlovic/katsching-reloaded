@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   def show
     @user = User.find_by(slug: params[:id].downcase)
-    @transactions = @user.transactions.this_month.order(date: :desc, created_at: :desc)
-    @balance = @user.transactions.this_month.balance
+    @shared = shared(default: false)
+    @transactions = transactions
+    @balance = @transactions.balance
   end
 
   def search
@@ -16,5 +17,13 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new(email: params[:email])
+  end
+
+  private
+
+  def transactions
+    result = @user.transactions.send(timing)
+    result = result.shared if @shared
+    result
   end
 end

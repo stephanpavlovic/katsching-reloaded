@@ -2,11 +2,11 @@
 
 class GroupUsersComponent < ViewComponent::Base
 
-  attr_reader :group, :scope, :only_shared
+  attr_reader :group, :timing, :only_shared
 
-  def initialize(group:, scope: :this_month, only_shared: true)
+  def initialize(group:, timing:, only_shared: true)
     @group = group
-    @scope = scope
+    @timing = timing&.to_sym || :this_month
     @only_shared = only_shared
   end
 
@@ -17,7 +17,7 @@ class GroupUsersComponent < ViewComponent::Base
   end
 
   def transactions
-    group.transactions.send(scope).send(only_shared ? :shared : :all)
+    group.transactions.send(timing).send(only_shared ? :shared : :all)
   end
 
 end

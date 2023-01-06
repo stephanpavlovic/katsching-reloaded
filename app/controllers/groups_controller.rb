@@ -1,8 +1,9 @@
 class GroupsController < ApplicationController
   def show
     @group = Group.find_by(slug: params[:id].downcase)
+    @shared = shared(default: true)
     @transactions = transactions.order(date: :desc, created_at: :desc)
-    @balance = transactions.balance
+    @balance = @transactions.balance
   end
 
   def new
@@ -16,10 +17,8 @@ class GroupsController < ApplicationController
   private
 
   def transactions
-    if params[:all].blank?
-      @group.transactions.this_month.shared
-    else
-      @group.transactions.this_month
-    end
+    result = @group.transactions.send(timing)
+    result = result.shared if @shared
+    result
   end
 end

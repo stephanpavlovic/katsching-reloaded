@@ -6,6 +6,8 @@ de:
     once: Einmalig
     submit: Speichern
     confirm: Wirklich löschen?
+    shared_transactions: Gemeinsame Ausgaben
+    all_transactions: Alle Transaktionen
   categories:
     groceries: Einkauf
     insurance: Versicherung
@@ -16,10 +18,6 @@ de:
     savings: Sparen
     holidays: Urlaub
     other: Sonstiges
-  groups:
-    show:
-      shared_transactions: Gemeinsame Ausgaben
-      all_transactions: Alle Transaktionen
   pages:
     home:
       headline: Ausgabentracker
@@ -51,8 +49,6 @@ de:
       subline: 'Erstell dein Konto und fange an, deine Ausgaben zu tracken'
       email_placeholder: 'E-Mail-Adresse eingeben'
       submit: Konto anlegen
-    show:
-      last_transactions: Letzte Transaktionen
   activerecord:
     attributes:
       transaction:
