@@ -16,17 +16,17 @@ class HeaderComponent < ViewComponent::Base
   def next_url
     case timing
     when :this_month
-      helpers.url_for(timing: :last_month)
+      helpers.url_for(shared: @shared, timing: :last_month)
     when :last_month
-      helpers.url_for(timing: :year)
+      helpers.url_for(shared: @shared, timing: :year)
     when :year
-      helpers.url_for(timing: :this_month)
+      helpers.url_for(shared: @shared, timing: :this_month)
     end
   end
 
   def switch_url
     options = {timing: params[:timing]}
-    options[:shared] = false if @shared
+    options[:shared] = !@shared
     url_for(options)
   end
 
