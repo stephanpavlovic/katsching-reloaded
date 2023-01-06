@@ -22,7 +22,7 @@ class TransactionComponent < ViewComponent::Base
   end
 
   def amount
-    helpers.format_money transaction.amount.abs
+    transaction.amount
   end
 
   def relevant_date
