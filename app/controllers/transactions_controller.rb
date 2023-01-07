@@ -53,7 +53,7 @@ class TransactionsController < ApplicationController
     base = base.send(@timing)
     base = base.shared if shared(default: false)
     @q = base.ransack(params[:q])
-    @q.result(distinct: true).order(date: :desc)
+    @q.result(distinct: true).order(date: :desc, created_at: :desc)
   end
 
   def transaction_params
