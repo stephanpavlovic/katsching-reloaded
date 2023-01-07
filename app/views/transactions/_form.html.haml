@@ -15,7 +15,7 @@
       .MarginBottomSmall= f.label :date, class: 'Label'
       = f.date_field :date, class: 'Input'
   .MarginBottomSmall= f.label :name, class: 'Label'
-  .MarginBottom= f.text_field :name, class: 'Input'
+  .MarginBottom= f.text_field :name, class: 'Input', autocomplete: 'off'
   .MarginBottom
     %label.CheckboxLabel
       = f.check_box :shared, value: true, class: 'Checkbox'
