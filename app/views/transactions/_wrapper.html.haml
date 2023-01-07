@@ -1,0 +1,4 @@
+%turbo-frame{ id: "wrapper_transaction_#{transaction.id}" }
+  .MarginBottomSmall
+    = render 'transactions/transaction', transaction: transaction
+    %turbo-frame{ id: "repetition_transaction_#{transaction.id}" }

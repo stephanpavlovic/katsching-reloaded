@@ -17,15 +17,22 @@ class TransactionsController < ApplicationController
   def edit
     @user = User.find_by(slug: params[:user_id])
     @transaction = @user.transactions.find(params[:id])
+    render turbo_stream: update_with_form
+  end
+
+  def show
+    @user = User.find_by(slug: params[:user_id])
+    @transaction = @user.transactions.find(params[:id])
+    render turbo_stream: replace_with_show
   end
 
   def update
     @user = User.find_by(slug: params[:user_id])
     @transaction = @user.transactions.find(params[:id])
     if @transaction.update(transaction_params)
-      redirect_to user_path(@user.slug)
+      render turbo_stream: replace_with_show
     else
-      render :edit
+      render turbo_stream: update_with_form
     end
   end
 
@@ -42,6 +49,23 @@ class TransactionsController < ApplicationController
   end
 
   private
+
+  def replace_with_show
+    turbo_stream.replace(
+      "transaction_#{@transaction.id}",
+      partial: 'transactions/transaction',
+      locals: {transaction: @transaction}
+    )
+  end
+
+  def update_with_form
+    url = user_transaction_path(@user.slug, @transaction)
+    turbo_stream.update(
+      "transaction_#{@transaction.id}",
+      partial: 'transactions/form',
+      locals: {url: url, transaction: @transaction}
+    )
+  end
 
   def transaction_search_results
     if params[:source].blank?

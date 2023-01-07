@@ -19,13 +19,22 @@ class RepetitionsController < ApplicationController
   def edit
     @repetition = Repetition.find(params[:id])
     @transaction = Transaction.find(params[:transaction_id])
+    render turbo_stream: turbo_stream.update(
+      "repetition_transaction_#{@transaction.id}",
+      partial: 'repetitions/form',
+      locals: {transaction: @transaction, repetition: @repetition}
+    )
   end
 
   def update
     @repetition = Repetition.find(params[:id])
     @transaction = Transaction.find(params[:transaction_id])
     if @repetition.update(repetition_params)
-      redirect_to user_path(@transaction.user.slug)
+      render turbo_stream: turbo_stream.replace(
+        "wrapper_transaction_#{@transaction.id}",
+        partial: '/transactions/wrapper',
+        locals: {transaction: @transaction}
+      )
     else
       render :edit
     end

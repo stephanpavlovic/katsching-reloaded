@@ -21,7 +21,8 @@
       = f.check_box :shared, value: true, class: 'Checkbox'
       = t('.shared')
   .Flex
-    = link_to t('common.cancel'), user_path(transaction.user.slug), class: 'Link'
+    - url = transaction.persisted? ? transaction_path(transaction, user_id: transaction.user) : user_path(transaction.user.slug)
+    = link_to t('common.cancel'), url, class: 'Link'
     = f.submit t('common.submit'), class: 'Button'
     - if transaction.persisted?
       = link_to t('common.delete'), user_transaction_path(transaction.user.slug, transaction), data: { turbo_confirm: t('common.confirm'), turbo_method: :delete }, class: 'Link'
