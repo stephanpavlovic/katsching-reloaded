@@ -41,8 +41,6 @@ class Repetition < ApplicationRecord
     update(next_iteration: calculate_next_iteration(original_transaction.date)) if next_iteration.blank?
   end
 
-  private
-
   def set_next_iteration!(date)
     update(next_iteration: date)
   end

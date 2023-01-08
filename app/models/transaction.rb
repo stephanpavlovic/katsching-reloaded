@@ -12,8 +12,16 @@ class Transaction < ApplicationRecord
   scope :past, -> { where('date <= ?', Date.today) }
   scope :shared, -> { where(shared: true) }
 
+  before_validation :update_repetition, if: :will_save_change_to_date?
+
   def self.balance
     Money.new(all.sum(:amount_cents))
+  end
+
+  def update_repetition
+    if repetition.present? && repetition.original_transaction.id == id
+      repetition.set_next_iteration!(repetition.calculate_next_iteration(date))
+    end
   end
 
   def group
