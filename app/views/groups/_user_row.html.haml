@@ -5,7 +5,7 @@
     .Label
       = t('.name')
       = "(Nr.#{index + 1})"
-  = text_field_tag "group[users_attributes][#{index}][name]", user, placeholder: t('.name'), required: true, class: 'Input'
+  = text_field_tag "group[users_attributes][#{index}][name]", user, placeholder: t('.name'), required: true, class: 'Input', data: { controller: (index > 0 ? 'auto-focus' : '') }
 .MarginBottom
   .MarginBottom
     .Label= t('.email')

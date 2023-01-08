@@ -27,10 +27,11 @@ de:
       users: Gruppenmitglieder
       group_name: 'Name der Gruppe'
       submit: 'Gruppe erstellen'
-      add_user: 'Weiteres Gruppenmitglied hinzufügen'
     user_row:
       name: 'Name des Gruppenmitglieds'
       email: 'E-Mail-Adresse des Gruppenmitglieds'
+    user_button:
+      add_user: Weiteres Gruppenmitglied hinzufügen
   pages:
     home:
       headline: Ausgabentracker
