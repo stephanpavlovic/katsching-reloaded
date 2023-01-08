@@ -2,6 +2,8 @@ class Group < ApplicationRecord
   has_many :users
   has_many :transactions, through: :users
 
+  accepts_nested_attributes_for :users
+
   before_create :assign_slug
 
   def balance

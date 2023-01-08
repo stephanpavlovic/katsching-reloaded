@@ -4,6 +4,8 @@ class User < ApplicationRecord
 
   before_create :assign_slug
 
+  validates :email, presence: true, uniqueness: true
+
   def to_param
     slug
   end

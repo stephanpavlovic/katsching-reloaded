@@ -1,0 +1,12 @@
+= form_with model: @group do |f|
+  .MarginBottom
+    .MarginBottom= f.label :name, class: 'Label'
+    = f.text_field :name, placeholder: t('.group_name'), required: true, autofocus: true, class: 'Input'
+  .Headline.MarginBottom= t('.users')
+  %turbo-frame#users
+    - @group.users.each_with_index do |user, index|
+      = render 'user_row', name: user.name, email: user.email, index: index
+  %turbo-frame#new-user-button
+    = render 'groups/user_button', index: @group.users.size
+  .MarginTop
+    = f.submit t('.submit'), class: 'Button'

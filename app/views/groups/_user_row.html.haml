@@ -1,0 +1,12 @@
+- user ||= ""
+- email ||= ""
+.MarginBottom
+  .MarginBottom
+    .Label
+      = t('.name')
+      = "(Nr.#{index + 1})"
+  = text_field_tag "group[users_attributes][#{index}][name]", user, placeholder: t('.name'), required: true, class: 'Input'
+.MarginBottom
+  .MarginBottom
+    .Label= t('.email')
+  = email_field_tag "group[users_attributes][#{index}][email]", email, placeholder: t('.email'), required: true, class: 'Input'

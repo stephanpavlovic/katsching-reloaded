@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "pages#home"
   get "/clear", to: "pages#clear", as: :clear
-  resources :groups, only: [:new, :create, :show]
+  resources :groups, only: [:new, :create, :show] do
+    get :user_row, on: :collection
+  end
   resources :users, only: [:show] do
     resources :transactions
     post :search, on: :collection

@@ -1,2 +1,6 @@
-.Margin
-  Work in progress
+.HeaderComponent
+  .HeaderComponent-title= t('.welcome')
+  .Box
+    .Headline.asDark= t('.new_group')
+  .MarginTop
+    = render 'form', group: @group

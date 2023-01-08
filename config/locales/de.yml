@@ -19,6 +19,18 @@ de:
     savings: Sparen
     holidays: Urlaub
     other: Sonstiges
+  groups:
+    new:
+      new_group: 'Neue Gruppe erstellen'
+      welcome: Willkommen beim Ausgabentracker
+    form:
+      users: Gruppenmitglieder
+      group_name: 'Name der Gruppe'
+      submit: 'Gruppe erstellen'
+      add_user: 'Weiteres Gruppenmitglied hinzufügen'
+    user_row:
+      name: 'Name des Gruppenmitglieds'
+      email: 'E-Mail-Adresse des Gruppenmitglieds'
   pages:
     home:
       headline: Ausgabentracker
