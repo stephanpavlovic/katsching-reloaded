@@ -31,3 +31,13 @@ main{
 * {
   box-sizing: border-box;
 }
+
+.FlashEffectGrey {
+  animation: flash_grey .8s cubic-bezier(.46,.03,.52,.96);
+}
+
+@keyframes flash_grey {
+  0% { background-color: $darkGrey; }
+  30% { background-color: $lightGrey; }
+  100% { background-color: $darkGrey; }
+}

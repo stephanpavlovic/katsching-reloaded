@@ -10,7 +10,7 @@ class RepetitionsController < ApplicationController
     if @repetition.save
       @transaction.update(repetition: @repetition)
       @repetition.set_inital_iteration!
-      redirect_to user_path(@transaction.user.slug)
+      render turbo_stream: render_replace
     else
       render :new
     end
@@ -30,17 +30,28 @@ class RepetitionsController < ApplicationController
     @repetition = Repetition.find(params[:id])
     @transaction = Transaction.find(params[:transaction_id])
     if @repetition.update(repetition_params)
-      render turbo_stream: turbo_stream.replace(
-        "wrapper_transaction_#{@transaction.id}",
-        partial: '/transactions/wrapper',
-        locals: {transaction: @transaction}
-      )
+      render turbo_stream: render_replace
     else
       render :edit
     end
   end
 
+  def destroy
+    @repetition = Repetition.find(params[:id])
+    @transaction = Transaction.find(params[:transaction_id])
+    @repetition.destroy
+    render turbo_stream: render_replace
+  end
+
   private
+
+  def render_replace
+    turbo_stream.replace(
+      "wrapper_transaction_#{@transaction.id}",
+      partial: '/transactions/wrapper',
+      locals: {transaction: @transaction, highlight: true}
+    )
+  end
 
   def repetition_params
     params.require(:repetition).permit(:timing)

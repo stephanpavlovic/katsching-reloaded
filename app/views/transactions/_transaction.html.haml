@@ -1,2 +1,3 @@
+- highlight ||= false
 %turbo-frame{ id: dom_id(transaction) }
-  = render TransactionComponent.new(transaction: transaction)
+  = render TransactionComponent.new(transaction: transaction, highlight: highlight)

@@ -1,4 +1,6 @@
+- highlight ||= false
 %turbo-frame{ id: "wrapper_transaction_#{transaction.id}" }
   .MarginBottomSmall
-    = render 'transactions/transaction', transaction: transaction
+    = render 'transactions/transaction', transaction: transaction, highlight: highlight
+
     %turbo-frame{ id: "repetition_transaction_#{transaction.id}" }

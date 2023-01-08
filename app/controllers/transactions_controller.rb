@@ -30,7 +30,7 @@ class TransactionsController < ApplicationController
     @user = User.find_by(slug: params[:user_id])
     @transaction = @user.transactions.find(params[:id])
     if @transaction.update(transaction_params)
-      render turbo_stream: replace_with_show
+      render turbo_stream: replace_with_show(highlight: true)
     else
       render turbo_stream: update_with_form
     end
@@ -50,11 +50,11 @@ class TransactionsController < ApplicationController
 
   private
 
-  def replace_with_show
+  def replace_with_show(highlight: false)
     turbo_stream.replace(
       "transaction_#{@transaction.id}",
       partial: 'transactions/transaction',
-      locals: {transaction: @transaction}
+      locals: {transaction: @transaction, highlight: highlight}
     )
   end
 

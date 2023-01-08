@@ -12,6 +12,6 @@ Rails.application.routes.draw do
     resources :transactions
     post :search, on: :collection
   end
-  resources :repetitions, only: [:create, :new, :edit, :update]
+  resources :repetitions, only: [:create, :new, :edit, :update, :destroy]
   resources :transactions, only: [:show, :index]
 end
