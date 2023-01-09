@@ -3,7 +3,7 @@
   padding: 2rem
   background-color: $secondary
   color: $white
-  height: 8rem
+  height: 8.5rem
   margin-bottom: 4rem
   a
     text-decoration: none
@@ -11,7 +11,6 @@
     display: block
     font-size: 1.5rem
     font-weight: 700
-    margin-bottom: 1rem
     color: $white
     a
       color: $white
@@ -21,3 +20,58 @@
   .HeaderComponent-balance-label
     font-size: 1rem
     color: $grey
+
+  .hamburger
+    display: none
+  .bar
+    display: block
+    width: 25px
+    height: 3px
+    margin: 5px auto
+    -webkit-transition: all 0.3s ease-in-out
+    transition: all 0.3s ease-in-out
+    background-color: $white
+  .nav-menu
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding-left: 0
+  .nav-item
+    margin-left: 3rem
+    list-style: none
+  .nav-link
+    font-size: 1rem
+    font-weight: 400
+    color: $white
+  @media only screen and (max-width: 768px)
+    .nav-menu
+      position: fixed
+      z-index: 2
+      right: -100vw
+      top: 3.5rem
+      flex-direction: column
+      background-color: $secondary
+      width: 100%
+      border-radius: 10px
+      text-align: center
+      transition: 0.3s
+      box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05)
+      &.active
+        right: 0
+    .nav-item
+      margin: 1rem 0
+      text-decoration: underline
+    .nav-link
+      font-size: 1.5rem
+      // color: $secondary
+    .hamburger
+      display: block
+      cursor: pointer
+      transform: translateY(6px)
+      &.active
+        .bar:nth-child(2)
+          opacity: 0
+        .bar:nth-child(1)
+          transform: translateY(8px) rotate(45deg)
+        .bar:nth-child(3)
+          transform: translateY(-8px) rotate(-45deg)

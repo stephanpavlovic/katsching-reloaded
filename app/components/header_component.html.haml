@@ -1,8 +1,7 @@
 .HeaderComponent
-  - if link.blank?
+  .Flex.MarginBottom
     .HeaderComponent-title= name
-  - else
-    = link_to name, link, class: 'HeaderComponent-title'
+    = render NavigationComponent.new(group: group)
   .Box
     = link_to next_url, class: 'HeaderComponent-balance' do
       .HeaderComponent-balance-label= label
@@ -11,7 +10,7 @@
       = link_to switch_url do
         .AvatarList.asLarge
           - if shared
-            .Avatar 2
-            .Avatar 1
+            - group.users.each do |user|
+              .Avatar= user.initials
           - else
             .Avatar 1
