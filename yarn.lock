@@ -122,3 +122,15 @@ to-regex-range@^5.0.1:
   integrity sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==
   dependencies:
     is-number "^7.0.0"
+
+turbo-morph@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/turbo-morph/-/turbo-morph-0.1.0.tgz#1db6900ea5a96780e94915d3bcb9c9b0e45c442e"
+  integrity sha512-+T7KQySPZS3MQYm4zHrAvGV7pdL8d/Tn5Dq51WlUNp6CCEQgWjS9ruiGbU1rb/pvFJa51HBm0tEH4aJiNxIrIQ==
+
+turbo_power@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/turbo_power/-/turbo_power-0.2.0.tgz#76e6d23af28d484d269c69033bf531479060567a"
+  integrity sha512-SNAl1Q5ejtuNsVwbqWsrLlkGamNu8knS+HFHNEBmOhicLXE4nrM1DzXrIUywtipA2owehUIcn42uILRrCug+Cg==
+  dependencies:
+    turbo-morph "^0.1.0"

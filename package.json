@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "sass": "^1.57.1"
+    "sass": "^1.57.1",
+    "turbo_power": "^0.2.0"
   },
   "scripts": {
     "build:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"

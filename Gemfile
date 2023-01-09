@@ -84,3 +84,5 @@ group :test do
   gem "webdrivers"
 end
 gem "cssbundling-rails"
+
+gem "turbo_power", "~> 0.2.0"
