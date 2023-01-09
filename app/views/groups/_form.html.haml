@@ -6,7 +6,7 @@
   %turbo-frame#users
     - @group.users.each_with_index do |user, index|
       = render 'user_row', name: user.name, email: user.email, index: index
-  %turbo-frame#new-user-button
-    = render 'groups/user_button', index: @group.users.size
-  .MarginTop
+  .Flex.asCenter.MarginTop.MarginBottom
+    %turbo-frame#new-user-button
+      = render 'groups/user_button', index: @group.users.size
     = f.submit t('.submit'), class: 'Button'

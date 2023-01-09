@@ -31,7 +31,7 @@ de:
       name: 'Name des Gruppenmitglieds'
       email: 'E-Mail-Adresse des Gruppenmitglieds'
     user_button:
-      add_user: Weiteres Gruppenmitglied hinzufügen
+      add_user: Gruppenmitglied hinzufügen
   pages:
     home:
       headline: Ausgabentracker
