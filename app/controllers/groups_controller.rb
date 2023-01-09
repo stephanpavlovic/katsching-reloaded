@@ -21,6 +21,11 @@ class GroupsController < ApplicationController
   end
 
   def user_row
+    index = params[:index]&.to_i
+    render turbo_stream: [
+      turbo_stream.append("users", partial: 'groups/user_row', locals: {index: index} ),
+      turbo_stream.update("new-user-button", partial: 'groups/user_button', locals: {index: index + 1} )
+    ]
   end
 
   private
