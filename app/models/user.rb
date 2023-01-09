@@ -11,7 +11,7 @@ class User < ApplicationRecord
   end
 
   def initials
-    name.split.map(&:first).join.upcase
+    name.first.upcase
   end
 
   private

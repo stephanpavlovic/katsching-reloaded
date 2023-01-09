@@ -11,8 +11,8 @@
       - if transaction.repetition.present?
         = link_to edit_repetition_path(transaction.repetition, transaction_id: transaction.id), data: { turbo_frame: "repetition_transaction_#{transaction.id}" } do
           .Transaction-label
-            -# = t("repetitions.timings.#{transaction.repetition.timing}")
-            = l(transaction.repetition.next_iteration.to_date, format: :short)
+            = t("repetitions.timings.#{transaction.repetition.timing}")
+            -# = l(transaction.repetition.next_iteration.to_date, format: :short)
           .Transaction-value
             = helpers.balance_money_tag amount
       - else
