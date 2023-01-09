@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_29_120829) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_09_143755) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -39,6 +39,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_29_120829) do
     t.string "category"
     t.boolean "shared", default: false
     t.bigint "repetition_id"
+    t.index ["category"], name: "index_transactions_on_category"
+    t.index ["name"], name: "index_transactions_on_name"
     t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
