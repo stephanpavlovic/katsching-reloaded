@@ -6,9 +6,9 @@ module Streaming
   end
 
   def stream_transaction_create
-    broadcast_prepend_to "group_#{self.group.id}", partial: 'transactions/wrapper', locals: { transaction: self, highlight: true }, target: "transactions-results-false"
+    broadcast_create(self, false)
     if shared
-      broadcast_prepend_to "group_#{self.group.id}", partial: 'transactions/wrapper', locals: { transaction: self, highlight: true }, target: "transactions-results-true"
+      broadcast_create(self, true)
     end
   end
 
@@ -21,6 +21,11 @@ module Streaming
   end
 
   private
+
+  def broadcast_create(transaction, shared)
+    broadcast_prepend_to "group_#{self.group.id}", partial: 'transactions/wrapper', locals: { transaction: self, highlight: true }, target: "transactions-results-#{shared}"
+    broadcast_prepend_to "user_#{self.user.id}", partial: 'transactions/wrapper', locals: { transaction: self, highlight: true }, target: "transactions-results-#{shared}"
+  end
 
   def broadcast_transaction(transaction)
     broadcast_update_to "group_#{transaction.group.id}", partial: 'transactions/transaction', locals: { transaction: transaction, highlight: true }, target: "transaction_#{transaction.id}"

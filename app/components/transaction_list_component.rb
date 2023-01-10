@@ -2,6 +2,7 @@
 
 class TransactionListComponent < ViewComponent::Base
 
+  attr_reader :source
   def initialize(source:, timing:, only_shared: )
     @source = source
     @timing = timing
