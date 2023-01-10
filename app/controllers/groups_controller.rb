@@ -17,6 +17,7 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     if @group.save
       auto_login(@group.users.first)
+      @group.users.drop(1).each{|u| u.deliver_magic_login_instructions!}
       redirect_to group_path(@group.slug)
     else
       render :new

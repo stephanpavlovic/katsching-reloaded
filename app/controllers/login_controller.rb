@@ -15,6 +15,6 @@ class LoginController < ApplicationController
 
   def destroy
     logout
-    redirect_to root_path
+    redirect_to root_path, notice: 'Erfolgreich ausgeloggt'
   end
 end

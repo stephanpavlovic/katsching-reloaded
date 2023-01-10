@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.find_by(email: params[:email])
     if @user
       @user.deliver_magic_login_instructions!
-      redirect_to root_path
+      redirect_to root_path, notice: 'Du hast eine E-Mail zum Einloggen erhalten'
     else
       redirect_to new_group_path(email: params[:email])
     end

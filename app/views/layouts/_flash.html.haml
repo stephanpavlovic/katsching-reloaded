@@ -1,0 +1,4 @@
+- flash.each do |key, value|
+  .Flash{ class: "as#{key.capitalize}", data: { controller: 'flash', 'flash-target': ' content' } }
+    .Flash-content= value
+    .Flash-close{ data: { action: 'click->flash#close' } }= svg('closeX')
