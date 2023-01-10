@@ -1,4 +1,4 @@
-= render HeaderComponent.new(name: @user.name, balance: @balance, timing: params[:timing], shared: @shared, group: @user.group)
+= render HeaderComponent.new(name: @user.name, balance: @balance, timing: params[:timing], shared: @shared)
 .Margin
   .Headline.MarginBottom
     = @shared ? t('common.shared_transactions') : t('common.all_transactions')

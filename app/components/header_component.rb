@@ -1,17 +1,20 @@
 # frozen_string_literal: true
 
 class HeaderComponent < ViewComponent::Base
-  attr_reader :name, :balance, :timing, :group, :shared
+  attr_reader :name, :balance, :timing, :shared
 
-  def initialize(name:, balance:, timing:, shared:, group: )
+  def initialize(name:, balance:, timing:, shared:)
     @name = name
     @balance = balance
     @timing = timing&.to_sym || :this_month
-    @group = group
     @shared = shared
   end
 
   private
+
+  def group
+    helpers.current_user.group
+  end
 
   def next_url
     case timing

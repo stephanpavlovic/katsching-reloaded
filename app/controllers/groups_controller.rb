@@ -1,6 +1,8 @@
 class GroupsController < ApplicationController
+  skip_before_action :require_login, only: [:new, :create]
+
   def show
-    @group = Group.find_by(slug: params[:id].downcase)
+    @group = current_user.group
     @shared = shared(default: true)
     @transactions = transactions
     @balance = @transactions.balance

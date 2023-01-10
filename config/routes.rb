@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "pages#home"
   get "/clear", to: "pages#clear", as: :clear
+  get '/login/:token', to: 'login#show', as: :login
+  get '/logout', to: 'login#destroy', as: :logout
   resources :groups, only: [:new, :create, :show] do
     get :user_row, on: :collection
   end

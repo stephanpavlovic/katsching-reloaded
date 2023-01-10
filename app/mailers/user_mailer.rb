@@ -1,7 +1,8 @@
 class UserMailer < ApplicationMailer
   default from: 'mail@katsching.app'
 
-  def welcome_email(user:)
+  def magic_login_email(user)
+    @url = login_url(token: user.magic_login_token)
     mail(to: user.email,
       subject: 'Blub',
       track_opens: 'true',

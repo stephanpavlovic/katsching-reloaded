@@ -64,7 +64,9 @@ end
 #
 # Indexes
 #
-#  index_transactions_on_user_id  (user_id)
+#  index_transactions_on_category  (category)
+#  index_transactions_on_name      (name)
+#  index_transactions_on_user_id   (user_id)
 #
 # Foreign Keys
 #

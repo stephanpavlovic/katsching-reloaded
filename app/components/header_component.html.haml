@@ -1,7 +1,7 @@
 .HeaderComponent
   .Flex.MarginBottom
     .HeaderComponent-title= name
-    = render NavigationComponent.new(group: group)
+    = render NavigationComponent.new
   .Box
     = link_to next_url, class: 'HeaderComponent-balance' do
       .HeaderComponent-balance-label= label
@@ -13,4 +13,4 @@
             - group.users.each do |user|
               .Avatar= user.initials
           - else
-            .Avatar 1
+            .Avatar= helpers.current_user.initials

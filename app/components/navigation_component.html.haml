@@ -5,6 +5,8 @@
     - group.users.each do |user|
       %li.nav-item
         = link_to user.name, user_path(user), class: 'nav-link', data: { action:  'navi#close' }
+    %li.nav-item
+      = link_to t('common.logout'), logout_path, class: 'nav-link', data: { action:  'navi#close' }
 
   .hamburger{ data: { target: 'navi.hamburger', action: 'click->navi#toggle' } }
     %span.bar

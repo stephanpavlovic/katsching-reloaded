@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
 class NavigationComponent < ViewComponent::Base
-  attr_reader :group
-  def initialize(group:)
-    @group = group
+  def initialize
+  end
+
+  def group
+    helpers.current_user.group
   end
 
   def users

@@ -1,8 +1,7 @@
 class PagesController < ApplicationController
-  def home
-  end
+  skip_before_action :require_login
 
-  def clear
-    render ClearComponent.new(frame: params[:frame])
+  def home
+    redirect_to current_user if logged_in?
   end
 end

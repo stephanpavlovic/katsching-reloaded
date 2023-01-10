@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_09_143755) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_10_204806) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,7 +51,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_09_143755) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
+    t.string "crypted_password"
+    t.string "salt"
+    t.string "magic_login_token"
+    t.datetime "magic_login_token_expires_at"
+    t.datetime "magic_login_email_sent_at"
     t.index ["group_id"], name: "index_users_on_group_id"
+    t.index ["magic_login_token"], name: "index_users_on_magic_login_token"
   end
 
   add_foreign_key "transactions", "users"

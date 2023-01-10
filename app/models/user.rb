@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  authenticates_with_sorcery!
   belongs_to :group
   has_many :transactions
 
@@ -25,17 +26,23 @@ end
 #
 # Table name: users
 #
-#  id         :bigint           not null, primary key
-#  email      :string
-#  name       :string
-#  slug       :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  group_id   :bigint           not null
+#  id                           :bigint           not null, primary key
+#  crypted_password             :string
+#  email                        :string
+#  magic_login_email_sent_at    :datetime
+#  magic_login_token            :string
+#  magic_login_token_expires_at :datetime
+#  name                         :string
+#  salt                         :string
+#  slug                         :string
+#  created_at                   :datetime         not null
+#  updated_at                   :datetime         not null
+#  group_id                     :bigint           not null
 #
 # Indexes
 #
-#  index_users_on_group_id  (group_id)
+#  index_users_on_group_id           (group_id)
+#  index_users_on_magic_login_token  (magic_login_token)
 #
 # Foreign Keys
 #
