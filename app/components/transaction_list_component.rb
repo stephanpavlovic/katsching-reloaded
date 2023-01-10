@@ -14,4 +14,8 @@ class TransactionListComponent < ViewComponent::Base
     transactions_path(source: { id: @source.slug, type: @source.class.name }, timing: @timing, shared: @only_shared)
   end
 
+  def group
+    @source.is_a?(Group) ? @source : @source.group
+  end
+
 end

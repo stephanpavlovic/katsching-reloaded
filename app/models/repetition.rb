@@ -1,9 +1,13 @@
 class Repetition < ApplicationRecord
+  include Streaming
+
   TIMINGS = %w[weekly monthly yearly quartaly halfyearly].freeze
 
   has_many :transactions
 
   scope :active, -> { where(active: true) }
+
+  after_save :stream_repetition_change
 
   def create_next_transaction!
     return if original_transaction.blank? || next_iteration.blank?

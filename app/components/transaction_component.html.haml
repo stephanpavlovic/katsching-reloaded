@@ -1,4 +1,4 @@
-.Transaction{ class: classes }
+.Transaction{ class: classes, id: dom_id(transaction) }
   .Transaction-flag
   .Transaction-content
     = link_to edit_user_transaction_path(user.slug, transaction), class: 'Transaction-date' do

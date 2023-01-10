@@ -1,5 +1,5 @@
 # encoding : utf-8
-
+Money.locale_backend = :i18n
 MoneyRails.configure do |config|
 
   # To set the default currency
@@ -82,7 +82,6 @@ MoneyRails.configure do |config|
     symbol: '€',
     sign_before_symbol: true
   }
-
   # If you would like to use I18n localization (formatting depends on the
   # locale):
   # config.locale_backend = :i18n

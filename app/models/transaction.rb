@@ -1,4 +1,6 @@
 class Transaction < ApplicationRecord
+  include Streaming
+
   belongs_to :user
   belongs_to :repetition, optional: true
 
@@ -14,9 +16,8 @@ class Transaction < ApplicationRecord
 
   before_validation :update_repetition, if: :will_save_change_to_date?
 
-  def self.balance
-    Money.new(all.sum(:amount_cents))
-  end
+  after_update :stream_transaction_update
+  after_destroy :stream_transaction_destroy
 
   def update_repetition
     if repetition.present? && repetition.original_transaction.id == id
@@ -38,6 +39,11 @@ class Transaction < ApplicationRecord
 
   def future?
     date > Date.today
+  end
+
+
+  def self.balance
+    Money.new(all.sum(:amount_cents))
   end
 end
 
