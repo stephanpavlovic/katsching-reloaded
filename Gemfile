@@ -58,6 +58,8 @@ gem 'ransack'
 # gem 'nokogiri', "1.14.0.rc1"
 gem "cssbundling-rails"
 gem "turbo_power", "~> 0.2.0"
+gem 'postmark-rails'
+gem 'sorcery'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
