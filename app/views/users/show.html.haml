@@ -4,6 +4,7 @@
     = @shared ? t('common.shared_transactions') : t('common.all_transactions')
   = render TransactionListComponent.new(source: @user, timing: params[:timing], only_shared: @shared)
 
-.Bottom
-  = turbo_frame_tag :new_transaction do
-    = render 'new_transaction', user: @user
+- if @user == current_user
+  .Bottom
+    = turbo_frame_tag :new_transaction do
+      = render 'new_transaction', user: current_user
