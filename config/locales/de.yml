@@ -2,6 +2,7 @@ de:
   common:
     cancel: Abbrechen
     delete: Löschen
+    logout: Abmelden
     prompt: 'Bitte wählen'
     once: Einmalig
     submit: Speichern

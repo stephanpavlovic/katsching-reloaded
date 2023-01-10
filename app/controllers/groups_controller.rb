@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  skip_before_action :require_login, only: [:new, :create]
+  skip_before_action :require_login, only: [:new, :create, :user_row]
 
   def show
     @group = current_user.group
@@ -16,6 +16,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
+      auto_login(@group.users.first)
       redirect_to group_path(@group.slug)
     else
       render :new
