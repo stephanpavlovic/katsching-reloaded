@@ -6,7 +6,7 @@
     = hidden_field_tag 'source[type]', params.dig(:source, :type)
     .MarginBottom= f.search_field :name_cont, data: { action: 'keyup->auto-submit#submit' }, autocomplete: "off", class: 'Input', placeholder: t('common.search')
     = f.submit "Search", class: 'Hidden'
-  %turbo-frame#transactions-results
+  %turbo-frame{id: "transactions-results-#{@shared}"}
     -# = render partial: 'wrapper', locals: {collection: transactions, as: :transaction}
     - transactions.each do |transaction|
       = render 'wrapper', transaction: transaction

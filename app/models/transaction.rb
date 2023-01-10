@@ -16,6 +16,7 @@ class Transaction < ApplicationRecord
 
   before_validation :update_repetition, if: :will_save_change_to_date?
 
+  after_create :stream_transaction_create
   after_update :stream_transaction_update
   after_destroy :stream_transaction_destroy
 

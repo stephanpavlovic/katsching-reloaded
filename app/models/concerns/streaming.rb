@@ -5,6 +5,13 @@ module Streaming
     broadcast_remove_to "group_#{group.id}", target: "transaction_#{id}"
   end
 
+  def stream_transaction_create
+    broadcast_prepend_to "group_#{self.group.id}", partial: 'transactions/wrapper', locals: { transaction: self, highlight: true }, target: "transactions-results-false"
+    if shared
+      broadcast_prepend_to "group_#{self.group.id}", partial: 'transactions/wrapper', locals: { transaction: self, highlight: true }, target: "transactions-results-true"
+    end
+  end
+
   def stream_transaction_update
     broadcast_transaction(self)
   end

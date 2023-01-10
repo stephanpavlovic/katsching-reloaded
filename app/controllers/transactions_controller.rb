@@ -8,7 +8,7 @@ class TransactionsController < ApplicationController
     @user = User.find_by(slug: params[:user_id])
     @transaction = @user.transactions.new(transaction_params)
     if @transaction.save
-      redirect_to user_path(@user.slug)
+      render turbo_stream: turbo_stream.update("new_transaction", partial: 'users/new_transaction', locals: { user: current_user })
     else
       render :new
     end
