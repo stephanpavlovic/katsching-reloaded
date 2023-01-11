@@ -4,7 +4,7 @@
 # Available submodules are: :user_activation, :http_basic_auth, :remember_me,
 # :reset_password, :session_timeout, :brute_force_protection, :activity_logging,
 # :magic_login, :external
-Rails.application.config.sorcery.submodules = [:magic_login]
+Rails.application.config.sorcery.submodules = [:session_timeout, :magic_login]
 
 # Here you can configure each submodule's features.
 Rails.application.config.sorcery.configure do |config|
