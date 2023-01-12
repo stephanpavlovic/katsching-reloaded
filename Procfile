@@ -1,3 +1,3 @@
-web: bundle exec rails server -p $PORT
+web: RUBYOPT='--enable-yjit' bundle exec rails server -p $PORT
 release: bundle exec rails db:migrate
-worker: bundle exec sidekiq
+worker: RUBYOPT='--enable-yjit' bundle exec sidekiq
