@@ -4,8 +4,7 @@ class GroupsController < ApplicationController
   def show
     @group = current_user.group
     @shared = shared(default: true)
-    @transactions = transactions
-    @balance = @transactions.balance
+    @timing = timing
   end
 
   def new
@@ -36,11 +35,5 @@ class GroupsController < ApplicationController
 
   def group_params
     params.require(:group).permit(:name, users_attributes: [:email, :name])
-  end
-
-  def transactions
-    result = @group.transactions.order(date: :desc, created_at: :desc).send(timing)
-    result = result.shared if @shared
-    result
   end
 end

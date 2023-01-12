@@ -1,8 +1,8 @@
-= render HeaderComponent.new(name: @user.name, balance: @balance, timing: params[:timing], shared: @shared)
+= render HeaderComponent.new(source: @user, timing: @timing, shared: @shared)
 .Margin
   .Headline.MarginBottom
     = @shared ? t('common.shared_transactions') : t('common.all_transactions')
-  = render TransactionListComponent.new(source: @user, timing: params[:timing], only_shared: @shared)
+  = render TransactionListComponent.new(source: @user, timing: @timing, only_shared: @shared)
 
 - if @user == current_user
   .Bottom

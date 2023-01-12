@@ -48,6 +48,14 @@ class TransactionsController < ApplicationController
     render partial: '/transactions/list', locals: {transactions: @transactions}
   end
 
+  def balance
+    source = params.dig(:source_type).constantize.find(params.dig(:source_id))
+    result = source.transactions
+    result = result.shared if shared(default: source.is_a?(User))
+    result = result.order(date: :desc).send(timing)
+    render turbo_stream: turbo_stream.update(params[:identifier], partial: '/transactions/balance', locals: { balance: result.balance })
+  end
+
   private
 
   def replace_with_show(highlight: false)

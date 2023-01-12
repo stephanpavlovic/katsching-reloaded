@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by!(slug: params[:id].downcase)
     @shared = shared(default: false)
-    @balance = transactions.balance
+    @timing = timing
   end
 
   def search

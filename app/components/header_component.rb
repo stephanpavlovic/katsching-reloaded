@@ -1,19 +1,26 @@
 # frozen_string_literal: true
 
 class HeaderComponent < ViewComponent::Base
-  attr_reader :name, :balance, :timing, :shared
+  attr_reader :timing, :shared, :source
 
-  def initialize(name:, balance:, timing:, shared:)
-    @name = name
-    @balance = balance
+  def initialize(source:, timing:, shared:)
+    @source = source
     @timing = timing&.to_sym || :this_month
     @shared = shared
   end
 
   private
 
+  def group?
+    source.is_a?(Group)
+  end
+
+  def name
+    source.name
+  end
+
   def group
-    helpers.current_user.group
+    group? ? source : source.group
   end
 
   def next_url
@@ -28,7 +35,7 @@ class HeaderComponent < ViewComponent::Base
   end
 
   def switch_url
-    options = {timing: params[:timing]}
+    options = { timing: params[:timing] }
     options[:shared] = !@shared
     url_for(options)
   end
@@ -42,6 +49,21 @@ class HeaderComponent < ViewComponent::Base
     when :year
       I18n.l(Date.today, format: '%Y')
     end
+  end
+
+  def balance_identifier
+    base = "#{source.class.name.downcase}_#{source.id}"
+    base += "_balance_#{timing}_#{@shared ? 'shared' : 'personal'}"
+  end
+
+  def balance_url
+    helpers.balance_transactions_path(
+      source_id: source.id,
+      source_type: source.class.to_s,
+      timing: timing,
+      shared: shared,
+      identifier: balance_identifier
+    )
   end
 
 end

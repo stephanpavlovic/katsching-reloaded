@@ -17,5 +17,7 @@ Rails.application.routes.draw do
     post :search, on: :collection
   end
   resources :repetitions, only: [:create, :new, :edit, :update, :destroy]
-  resources :transactions, only: [:show, :index]
+  resources :transactions, only: [:show, :index] do
+    get :balance, on: :collection
+  end
 end
