@@ -33,6 +33,8 @@ end
 #  magic_login_token            :string
 #  magic_login_token_expires_at :datetime
 #  name                         :string
+#  remember_me_token            :string
+#  remember_me_token_expires_at :datetime
 #  salt                         :string
 #  slug                         :string
 #  created_at                   :datetime         not null
@@ -43,6 +45,7 @@ end
 #
 #  index_users_on_group_id           (group_id)
 #  index_users_on_magic_login_token  (magic_login_token)
+#  index_users_on_remember_me_token  (remember_me_token)
 #
 # Foreign Keys
 #

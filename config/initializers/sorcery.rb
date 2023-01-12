@@ -4,7 +4,7 @@
 # Available submodules are: :user_activation, :http_basic_auth, :remember_me,
 # :reset_password, :session_timeout, :brute_force_protection, :activity_logging,
 # :magic_login, :external
-Rails.application.config.sorcery.submodules = [:session_timeout, :magic_login]
+Rails.application.config.sorcery.submodules = [:remember_me, :session_timeout, :magic_login]
 
 # Here you can configure each submodule's features.
 Rails.application.config.sorcery.configure do |config|
@@ -46,7 +46,7 @@ Rails.application.config.sorcery.configure do |config|
   # Use the last action as the beginning of session timeout.
   # Default: `false`
   #
-  config.session_timeout_from_last_action = true
+  # config.session_timeout_from_last_action = true
 
   # Invalidate active sessions. Requires an `invalidate_sessions_before` timestamp column
   # Default: `false`
