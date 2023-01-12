@@ -1,5 +1,5 @@
 %turbo-frame#transactions
-  = search_form_for @q, url: url_for, data: { controller: 'auto-submit', turbo_frame: 'transactions-results'} do |f|
+  = search_form_for @q, url: url_for, data: { controller: 'auto-submit', turbo_frame: "transactions-results-#{@shared}"} do |f|
     = hidden_field_tag :shared, @shared
     = hidden_field_tag :timing, @timing
     = hidden_field_tag 'source[id]', params.dig(:source, :id)
