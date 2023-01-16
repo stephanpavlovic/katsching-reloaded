@@ -47,7 +47,6 @@ gem "bootsnap", require: false
 gem 'haml-rails'
 gem "sassc-rails"
 # gem 'rails_admin', '~> 3.0'
-gem 'interactor', '~> 3.1'
 gem 'view_component'
 gem 'colorize'
 gem 'money-rails'
@@ -60,6 +59,7 @@ gem "cssbundling-rails"
 gem "turbo_power", "~> 0.2.0"
 gem 'postmark-rails'
 gem 'sorcery'
+gem 'interactor'
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
