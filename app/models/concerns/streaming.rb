@@ -27,13 +27,19 @@ module Streaming
 
   def broadcast_transaction(transaction)
     broadcast_update_to "group_#{transaction.group.id}", partial: 'transactions/transaction', locals: { transaction: transaction, highlight: true }, target: "transaction_#{transaction.id}"
-    broadcast_balance_change(true)
+    broadcast_update_to "user_#{transaction.user.id}", partial: 'transactions/transaction', locals: { transaction: transaction, highlight: true }, target: "transaction_#{transaction.id}"
+
     broadcast_balance_change(false)
+    if shared?
+      broadcast_balance_change(true)
+    end
   end
 
   def broadcast_balance_change(shared)
     interactor = BalanceCalculator.call(source: self.user, timing: :this_month, shared: shared)
-
     broadcast_update_to "user_#{self.user.id}", partial: 'transactions/balance', locals: { balance: interactor.balance }, target: interactor.identifier
+
+    interactor = BalanceCalculator.call(source: self.group, timing: :this_month, shared: shared)
+    broadcast_update_to "group_#{self.group.id}", partial: 'transactions/balance', locals: { balance: interactor.balance }, target: interactor.identifier
   end
 end
