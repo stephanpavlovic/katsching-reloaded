@@ -2,4 +2,6 @@
 import { Turbo } from '@hotwired/turbo'
 import 'controllers'
 import TurboPower from 'turbo_power'
+import "chartkick"
+import "Chart.bundle"
 TurboPower.initialize(Turbo.StreamActions)
