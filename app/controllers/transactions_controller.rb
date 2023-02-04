@@ -45,6 +45,7 @@ class TransactionsController < ApplicationController
 
   def index
     @transactions = transaction_search_results
+    @categories = @transactions.map(&:category).uniq
     render partial: '/transactions/list', locals: {transactions: @transactions}
   end
 

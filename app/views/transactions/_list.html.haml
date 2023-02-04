@@ -8,7 +8,7 @@
     .MarginBottom
       .Flex
         = f.search_field :name_cont, data: { action: 'keyup->auto-submit#submit' }, autocomplete: "off", class: 'Input', placeholder: t('common.search')
-        = f.select :category_eq, options_for_select(category_options, params[:category_eq]), { prompt: 'Wählen' }, {data: { action: 'change->auto-submit#submit' }, class: 'Select'}
+        = f.select :category_eq, options_for_select(category_options(@categories), params[:category_eq]), { prompt: 'Wählen' }, {data: { action: 'change->auto-submit#submit' }, class: 'Select'}
     = f.submit "Search", class: 'Hidden'
   %turbo-frame{id: "transactions-results-#{@shared}"}
     -# = render partial: 'wrapper', locals: {collection: transactions, as: :transaction}

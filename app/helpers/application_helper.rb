@@ -6,8 +6,8 @@ module ApplicationHelper
     "[svg '#{name}' not found]"
   end
 
-  def category_options
-    Transaction::CATEGORIES.map { |category| [t("categories.#{category}"), category] }
+  def category_options(categories = Transaction::CATEGORIES)
+    categories.map { |category| [t("categories.#{category}"), category] }
   end
 
   def timing_options
