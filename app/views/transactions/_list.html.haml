@@ -1,5 +1,4 @@
 %turbo-frame#transactions
-  -# = render CategoriesComponent.new(transactions: transactions)
   = search_form_for @q, url: url_for, data: { controller: 'auto-submit', turbo_frame: "transactions-results-#{@shared}"} do |f|
     = hidden_field_tag :shared, @shared
     = hidden_field_tag :timing, @timing
@@ -8,9 +7,10 @@
     .MarginBottom
       .Flex
         = f.search_field :name_cont, data: { action: 'keyup->auto-submit#submit' }, autocomplete: "off", class: 'Input', placeholder: t('common.search')
-        = f.select :category_eq, options_for_select(category_options(@categories), params[:category_eq]), { prompt: 'Wählen' }, {data: { action: 'change->auto-submit#submit' }, class: 'Select'}
+        = f.select :category_eq, options_for_select(category_options(@categories), params[:category_eq]), { prompt: 'Alle Kategorien' }, {data: { action: 'change->auto-submit#submit' }, class: 'Select'}
     = f.submit "Search", class: 'Hidden'
   %turbo-frame{id: "transactions-results-#{@shared}"}
-    -# = render partial: 'wrapper', locals: {collection: transactions, as: :transaction}
+    - if @source == Group
+      .MarginBottom= render CategoriesComponent.new(transactions: transactions)
     - transactions.each do |transaction|
       = render 'wrapper', transaction: transaction

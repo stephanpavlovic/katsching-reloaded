@@ -8,20 +8,24 @@ class CategoriesComponent < ViewComponent::Base
   private
 
   def data
-    chart_data = []
+    result = []
+    all_cents = @transactions.sum(&:amount_cents).abs
+    index = 0
     @transactions.group_by(&:user_id).each do |user, transactions|
       user = User.find(user)
-      chart_data << {
+      sum = transactions.sum(&:amount_cents).abs
+      result << {
         name: user.name,
-        data: group_transactions(transactions)
+        sum: Money.new(sum),
+        percentage: (sum.to_f / all_cents.to_f * 100).round,
+        color: colors[index]
       }
+      index += 1
     end
-    chart_data
+    result.sort_by { |r| r[:name] }
   end
 
-  def group_transactions(transactions)
-    transactions.group_by(&:category).map do |category, transactions|
-      [category, transactions.sum(&:amount_cents).abs / 100]
-    end
+  def colors
+    ['#4051b5', '#890d3b', '#4051b5', '#890d3b']
   end
 end

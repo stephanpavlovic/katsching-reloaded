@@ -80,7 +80,8 @@ class TransactionsController < ApplicationController
     if params[:source].blank?
       base = Transaction.all
     else
-      base = params.dig(:source, :type).constantize.find_by(slug: params.dig(:source, :id)).transactions
+      @source = params.dig(:source, :type).constantize
+      base = @source.find_by(slug: params.dig(:source, :id)).transactions
     end
     @timing = timing
     base = base.send(@timing)

@@ -1,1 +1,6 @@
-=column_chart data, stacked: true, height: '10rem'
+-# =column_chart data, stacked: true, height: '10rem'
+.Split
+  - data.each do |entry|
+    .Split-item{style: "width: #{entry[:percentage]}%; background: #{entry[:color]};"}
+      .Split-name= entry[:name]
+      .Split-value= helpers.format_money entry[:sum]
