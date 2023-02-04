@@ -1,11 +1,10 @@
 = render HeaderComponent.new(source: @group, timing: @timing, shared: @shared)
-.Margin
+.Margin.MainContent
   .Headline.MarginBottom
     = @shared ? t('common.shared_transactions') : t('common.all_transactions')
-  -# .MarginBottom
-  -#   = render GroupUsersComponent.new(group: @group, timing: params[:timing], only_shared: @shared)
   = render TransactionListComponent.new(source: @group, timing: params[:timing], only_shared: @shared)
 
 .Bottom
-  = turbo_frame_tag :new_transaction do
-    = render 'users/new_transaction', user: current_user
+  .MainContent
+    = turbo_frame_tag :new_transaction do
+      = render 'users/new_transaction', user: current_user

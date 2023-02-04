@@ -1,10 +1,11 @@
 = render HeaderComponent.new(source: @user, timing: @timing, shared: @shared)
-.Margin
+.Margin.MainContent
   .Headline.MarginBottom
     = @shared ? t('common.shared_transactions') : t('common.all_transactions')
   = render TransactionListComponent.new(source: @user, timing: @timing, only_shared: @shared)
 
 - if @user == current_user
   .Bottom
-    = turbo_frame_tag :new_transaction do
-      = render 'new_transaction', user: current_user
+    .MainContent
+      = turbo_frame_tag :new_transaction do
+        = render 'new_transaction', user: current_user
