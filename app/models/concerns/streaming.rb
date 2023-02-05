@@ -8,6 +8,10 @@ module Streaming
   def stream_transaction_create
     broadcast_create(self, false)
     broadcast_create(self, true) if shared
+    broadcast_balance_change(false, self)
+    if self.shared?
+      broadcast_balance_change(true, self)
+    end
   end
 
   def stream_transaction_update
