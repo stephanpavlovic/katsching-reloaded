@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :transactions
     post :search, on: :collection
+    get :repetitions, on: :member
   end
   resources :repetitions, only: [:create, :new, :edit, :update, :destroy]
   resources :transactions, only: [:show, :index] do

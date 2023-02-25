@@ -2,6 +2,7 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
   belongs_to :group
   has_many :transactions
+  has_many :repetitions
 
   before_create :assign_slug
 

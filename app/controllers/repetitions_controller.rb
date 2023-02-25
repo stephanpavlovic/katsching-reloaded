@@ -5,7 +5,7 @@ class RepetitionsController < ApplicationController
   end
 
   def create
-    @repetition = Repetition.new(repetition_params)
+    @repetition = Repetition.new(repetition_params.merge(user: current_user)
     @transaction = Transaction.find(params[:transaction_id])
     if @repetition.save
       @transaction.update(repetition: @repetition)

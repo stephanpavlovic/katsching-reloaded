@@ -17,6 +17,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def repetitions
+    @user = User.find_by!(slug: params[:id].downcase)
+    @repetitions = @user.repetitions.active.order(:timing)
+  end
+
   private
 
   def transactions

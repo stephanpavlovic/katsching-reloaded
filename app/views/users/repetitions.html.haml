@@ -1,0 +1,18 @@
+.Margin.MainContent
+  %table.Table
+    %thead
+      %tr
+        %th= 'Timing'
+        %th= 'Status'
+        %th= 'Nächste Ausführung'
+    %tbody
+      - @repetitions.each do |repetition|
+        %tr.Table-row
+          %td= repetition.timing
+          %td= repetition.active ? 'Aktiv' : 'Inaktive'
+          %td= l(repetition.next_iteration.to_date)
+        - repetition.transactions.order(date: :desc).each do |transaction|
+          %tr.Table-row.asSub
+            %td= transaction.name
+            %td= balance_money_tag transaction.amount
+            %td= l(transaction.date)

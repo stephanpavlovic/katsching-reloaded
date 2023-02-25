@@ -1,6 +1,10 @@
 .HeaderComponent
   .Flex.MarginBottom
-    .HeaderComponent-title= name
+    .HeaderComponent-title
+      - if group?
+        = name
+      - else
+        = link_to name, repetitions_user_path(source)
     = render NavigationComponent.new
   .Box.MainContent
     = link_to next_url, class: 'HeaderComponent-balance' do
